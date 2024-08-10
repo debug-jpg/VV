@@ -8,6 +8,7 @@ import tile.TileManager;
 
 import entity.*;
 
+@SuppressWarnings("all")
 public class GamePanel extends JPanel implements Runnable {
 
     //----------SCREEN----------//
@@ -35,9 +36,12 @@ public class GamePanel extends JPanel implements Runnable {
     // Initiate
     TileManager tile = new TileManager(this);
     KeyHandler key = new KeyHandler();
-    Thread gameThread;
+    Sound sound = new Sound();
     public CollisionChecker hitbox = new CollisionChecker(this);
     public AssetSetter assetSetter = new AssetSetter(this);
+    Thread gameThread;
+
+    // ENTITIES and OBJECTS
     public Player player = new Player(this, key);
     public SuperObject obj[] = new SuperObject[10];
 
@@ -53,6 +57,8 @@ public class GamePanel extends JPanel implements Runnable {
     
     public void setupGame() {
         assetSetter.setObject();
+
+        playMusic(0);
     }
 
     public void startGameThread() {
@@ -107,6 +113,20 @@ public class GamePanel extends JPanel implements Runnable {
         g2.dispose();
     }
 
+    public void playMusic(int i) {
+        sound.setFile(i);
+        sound.play();
+        sound.loop();
+    }
+
+    public void stopMusic() {
+        sound.stop();
+    }
+
+    public void playSE(int i) {
+        sound.setFile(i);
+        sound.play();
+    }
 }
 
 

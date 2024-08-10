@@ -8,6 +8,7 @@ import java.awt.image.*;
 
 import javax.imageio.ImageIO;
 
+@SuppressWarnings("all")
 public class Player extends Entity {
 
     GamePanel gp;
@@ -117,22 +118,27 @@ public class Player extends Entity {
 
             switch (objectName) {
             case "Key":
+                gp.playSE(1);
                 hasKey++;
                 gp.obj[i] = null;
                 break;
             case "Door":
+                gp.playSE(3);
                 if (hasKey > 0) {
                     gp.obj[i] = null;
                     hasKey--;
                 }
+                break;
+            case "Boots":
+                gp.playSE(2);
+                speed += 2;
+                gp.obj[i] = null;
                 break;
             }
         }
     }
 
     public void draw(Graphics2D g2) {
-//		g2.setColor(Color.WHITE);
-//		g2.fillRect(x, y, gp.tileSize, gp.tileSize);
 
         BufferedImage image = null;
 
