@@ -14,6 +14,7 @@ public class NPC_OldMan extends Entity {
         speed = 1;
 
         getNPCimage();
+        setDialog();
     }
 
     public void getNPCimage() {
@@ -26,6 +27,15 @@ public class NPC_OldMan extends Entity {
         left2 = setup("/npc/oldman_left_2");
         right1 = setup("/npc/oldman_right_1");
         right2 = setup("/npc/oldman_right_2");
+
+    }
+
+    public void setDialog() {
+
+        dialogs[0] = "好きな人がいるんです。";
+        dialogs[1] = "あの人がとってもかわいいんです。";
+        dialogs[2] = "それに彼女は優しいものですう。";
+        dialogs[3] = "舐めるの。";
 
     }
 
@@ -54,6 +64,10 @@ public class NPC_OldMan extends Entity {
             actionLockCounter = 0;
         }
 
+    }
+
+    public void speak() {
+        super.speak();
     }
 
 }
