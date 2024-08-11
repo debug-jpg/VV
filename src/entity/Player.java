@@ -133,7 +133,13 @@ public class Player extends Entity {
 
         if (i != 999) {
 
+            if (gp.key.enter) {
+                gp.gameState = gp.dialogState;
+                gp.npc[i].speak();
+            }
         }
+
+        gp.key.enter = false;
 
     }
 
