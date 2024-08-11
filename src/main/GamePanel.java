@@ -50,6 +50,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     // GAME STATE
     public int gameState;
+    public final int titleState = 0;
     public final int playState = 1;
     public final int pauseState = 2;
     public final int dialogState = 3;
@@ -67,8 +68,8 @@ public class GamePanel extends JPanel implements Runnable {
     public void setupGame() {
         assetSetter.setObject();
         assetSetter.setNPC();
-        playMusic(0);
-        gameState = playState;
+//        playMusic(0);
+        gameState = titleState;
     }
 
     public void startGameThread() {
@@ -120,28 +121,37 @@ public class GamePanel extends JPanel implements Runnable {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
 
-        //---------- TILE ------------//
-        tile.draw(g2);
-
-        //---------- OBJECT ----------//
-        for (int i = 0; i < obj.length; i++) {
-            if (obj[i] != null) {
-                obj[i].draw(g2, this);
-            }
+        //---------- TITLE ----------//
+        if (gameState == titleState) {
+            ui.draw(g2);
         }
+        //---------- OTHERS ----------//
+        else {
 
-        //---------- NPC ----------//
-        for (int i = 0; i < npc.length; i++) {
-            if (npc[i] != null) {
-                npc[i].draw(g2);
+            //---------- TILE ------------//
+            tile.draw(g2);
+
+            //---------- OBJECT ----------//
+            for (int i = 0; i < obj.length; i++) {
+                if (obj[i] != null) {
+                    obj[i].draw(g2, this);
+                }
             }
+
+            //---------- NPC ----------//
+            for (int i = 0; i < npc.length; i++) {
+                if (npc[i] != null) {
+                    npc[i].draw(g2);
+                }
+            }
+
+            //---------- PLAYER ----------//
+            player.draw(g2);
+
+            //---------- UI ----------//
+            ui.draw(g2);
+
         }
-
-        //---------- PLAYER ----------//
-        player.draw(g2);
-
-        //---------- UI ----------//
-        ui.draw(g2);
 
         // --------------------- //
 
