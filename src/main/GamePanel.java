@@ -68,7 +68,6 @@ public class GamePanel extends JPanel implements Runnable {
         assetSetter.setObject();
         assetSetter.setNPC();
         playMusic(0);
-        stopMusic();
         gameState = playState;
     }
 
@@ -143,6 +142,8 @@ public class GamePanel extends JPanel implements Runnable {
 
         //---------- UI ----------//
         ui.draw(g2);
+
+        // --------------------- //
 
         g2.dispose();
     }
