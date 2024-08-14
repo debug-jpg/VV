@@ -36,6 +36,7 @@ public class NPC_OldMan extends Entity {
         dialogs[1] = "あの人がとってもかわいいんです。";
         dialogs[2] = "それに彼女は優しいものですう。";
         dialogs[3] = "舐めるの。";
+        dialogs[4] = "痛いです。";
 
     }
 
