@@ -1,6 +1,8 @@
 package main;
 
+import object.Heart;
 import object.Key;
+import object.SuperObject;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -11,7 +13,7 @@ public class UI {
     GamePanel gp;
     Graphics2D g2;
     Font arial, end, jp, jpTitle;
-    BufferedImage keyImage;
+    BufferedImage keyImage, heart_full, heart_half, heart_blank;
     public boolean messageOn = false;
     public String message = "";
     int messageCounter = 0;
@@ -29,8 +31,14 @@ public class UI {
         jp = new Font("Meiryo", Font.PLAIN, 20);
         jpTitle = new Font("Meiryo", Font.BOLD, 80);
 
-        Key key = new Key(gp);
-        keyImage = key.image;
+//        Key key = new Key(gp);
+//        keyImage = key.image;
+
+        // CREATE HUD OBJECT
+        SuperObject heart = new Heart(gp);
+        heart_full = heart.image;
+        heart_half = heart.image2;
+        heart_blank = heart.image3;
 
     }
 
@@ -52,44 +60,45 @@ public class UI {
         }
 
         if (gp.gameState == gp.playState) {
+            // ------------------- //
             if (gameFinished) {
-
-                g2.setFont(arial);
-                g2.setColor(Color.white);
-
-                String text;
-                int textLength;
-                int x, y;
-
-                text = "You found the treasure";
-                textLength = (int) g2.getFontMetrics().getStringBounds(text, g2).getWidth();
-
-                x = gp.screenWidth / 2 - textLength / 2;
-                y = gp.screenHeight / 2 - (gp.tileSize * 3);
-
-                g2.drawString(text, x, y);
-
-                g2.setFont(end);
-                g2.setColor(Color.yellow);
-
-                text = "Omedetou Gozaimasu";
-                textLength = (int) g2.getFontMetrics().getStringBounds(text, g2).getWidth();
-
-                x = gp.screenWidth / 2 - textLength / 2;
-                y = gp.screenHeight / 2 + (gp.tileSize * 2);
-
-                g2.drawString(text, x, y);
-
-                gp.gameThread = null;
-
+//
+//                g2.setFont(arial);
+//                g2.setColor(Color.white);
+//
+//                String text;
+//                int textLength;
+//                int x, y;
+//
+//                text = "You found the treasure";
+//                textLength = (int) g2.getFontMetrics().getStringBounds(text, g2).getWidth();
+//
+//                x = gp.screenWidth / 2 - textLength / 2;
+//                y = gp.screenHeight / 2 - (gp.tileSize * 3);
+//
+//                g2.drawString(text, x, y);
+//
+//                g2.setFont(end);
+//                g2.setColor(Color.yellow);
+//
+//                text = "Omedetou Gozaimasu";
+//                textLength = (int) g2.getFontMetrics().getStringBounds(text, g2).getWidth();
+//
+//                x = gp.screenWidth / 2 - textLength / 2;
+//                y = gp.screenHeight / 2 + (gp.tileSize * 2);
+//
+//                g2.drawString(text, x, y);
+//
+//                gp.gameThread = null;
+//
             }
             else {
-                g2.setFont(arial);
-                g2.setColor(Color.white);
-                g2.drawImage(keyImage, gp.tileSize / 2, gp.tileSize / 2, gp.tileSize, gp.tileSize, null);
-                g2.drawString("x " + gp.player.hasKey, 74, 65);
-
-                // MESSAGE
+//                g2.setFont(arial);
+//                g2.setColor(Color.white);
+//                g2.drawImage(keyImage, gp.tileSize / 2, gp.tileSize / 2, gp.tileSize, gp.tileSize, null);
+//                g2.drawString("x " + gp.player.hasKey, 74, 65);
+//
+//                // MESSAGE
                 if (messageOn) {
                     g2.setFont(g2.getFont().deriveFont(30f));
                     g2.drawString(message, gp.tileSize / 2, gp.tileSize * 5);
@@ -102,6 +111,10 @@ public class UI {
                     }
                 }
             }
+            // ------------------------- //
+
+            drawPlayerLife();
+
         }
         if (gp.gameState == gp.pauseState) {
             drawPauseScreen();
@@ -109,8 +122,36 @@ public class UI {
         if (gp.gameState == gp.dialogState) {
             drawDialogScreen();
         }
+    }
 
+    public void drawPlayerLife() {
 
+        int x = gp.tileSize / 2;
+        int y = gp.tileSize / 2;
+        int i = 0;
+
+        // MAX LIFE
+        while (i < gp.player.life / 2) {
+            g2.drawImage(heart_blank, x, y, null);
+            i++;
+            x += gp.tileSize;
+        }
+
+        // RESET
+        x = gp.tileSize / 2;
+        y = gp.tileSize / 2;
+        i = 0;
+
+        // CURRENT LIFE
+        while (i < gp.player.life) {
+            g2.drawImage(heart_half, x, y, null);
+            i++;
+            if (i < gp.player.life) {
+                g2.drawImage(heart_full, x, y, null);
+            }
+            i++;
+            x += gp.tileSize;
+        }
 
     }
 
