@@ -162,7 +162,7 @@ public class UI {
             g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
 
             g2.setFont(jpTitle);
-            String text = "好きだから";
+            String text = "VISUAL VENTURE";
             int x = getXforCenteredText(text);
             int y = gp.tileSize * 3;
 
@@ -180,9 +180,9 @@ public class UI {
             g2.drawImage(gp.player.down1, x, y, gp.tileSize * 2, gp.tileSize * 2, null);
 
             // MENU
-            g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 48));
+            g2.setFont(arial);
 
-            text = "新しいゲーム";
+            text = "PLAY";
             x = getXforCenteredText(text);
             y += gp.tileSize * 4;
             g2.drawString(text, x, y);
@@ -191,7 +191,7 @@ public class UI {
                 g2.drawString(">", x - gp.tileSize, y);
             }
 
-            text = "オプション";
+            text = "ABOUT";
             x = getXforCenteredText(text);
             y += gp.tileSize;
             g2.drawString(text, x, y);
@@ -200,12 +200,21 @@ public class UI {
                 g2.drawString(">", x - gp.tileSize, y);
             }
 
-            text = "止める";
+            text = "HELP";
             x = getXforCenteredText(text);
             y += gp.tileSize;
             g2.drawString(text, x, y);
 
             if (commandNum == 2) {
+                g2.drawString(">", x - gp.tileSize, y);
+            }
+
+            text = "EXIT";
+            x = getXforCenteredText(text);
+            y += gp.tileSize;
+            g2.drawString(text, x, y);
+
+            if (commandNum == 3) {
                 g2.drawString(">", x - gp.tileSize, y);
             }
         }
@@ -217,7 +226,7 @@ public class UI {
             g2.setColor(Color.white);
             g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 42));
 
-            String text = "選択してね";
+            String text = "Who's my crush?";
             int x = getXforCenteredText(text);
             int y = gp.tileSize * 3;
             g2.drawString(text, x, y);
