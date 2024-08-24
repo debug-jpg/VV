@@ -1,7 +1,5 @@
 package main;
 
-import object.Key;
-
 import javax.swing.*;
 import java.awt.event.*;
 
@@ -30,12 +28,12 @@ public class KeyHandler implements KeyListener{
                 if (code == KeyEvent.VK_W || code == KeyEvent.VK_UP) {
                     gp.ui.commandNum--;
                     if (gp.ui.commandNum < 0) {
-                        gp.ui.commandNum = 2;
+                        gp.ui.commandNum = 3;
                     }
                 }
                 if (code == KeyEvent.VK_S || code == KeyEvent.VK_DOWN) {
                     gp.ui.commandNum++;
-                    if (gp.ui.commandNum > 2) {
+                    if (gp.ui.commandNum > 3) {
                         gp.ui.commandNum = 0;
                     }
                 }
@@ -44,9 +42,12 @@ public class KeyHandler implements KeyListener{
                         gp.ui.titleScreenState = 1;
                     }
                     if (gp.ui.commandNum == 1) {
-                        // add later
+                        JOptionPane.showMessageDialog(null, "Coming Soon...");
                     }
                     if (gp.ui.commandNum == 2) {
+                        JOptionPane.showMessageDialog(null, "Coming Soon...");
+                    }
+                    if (gp.ui.commandNum == 3) {
                         int confirm = JOptionPane.showConfirmDialog(null, "ゲームを終了します。", "確認", JOptionPane.YES_NO_OPTION);
                         if (confirm == 0) {
                             System.exit(0);

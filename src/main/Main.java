@@ -9,7 +9,7 @@ public class Main {
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
-        frame.setTitle("2D Adventure");
+        frame.setTitle("Visual Venture");
 
         GamePanel gamePanel = new GamePanel();
         frame.add(gamePanel);
