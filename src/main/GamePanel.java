@@ -41,6 +41,7 @@ public class GamePanel extends JPanel implements Runnable {
     public CollisionChecker hitbox = new CollisionChecker(this);
     public AssetSetter assetSetter = new AssetSetter(this);
     public UI ui = new UI(this);
+    public EventHandler handler = new EventHandler(this);
     Thread gameThread;
 
     // ENTITIES and OBJECTS
@@ -68,7 +69,6 @@ public class GamePanel extends JPanel implements Runnable {
     public void setupGame() {
         assetSetter.setObject();
         assetSetter.setNPC();
-//        playMusic(0);
         gameState = titleState;
     }
 

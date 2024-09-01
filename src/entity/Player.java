@@ -86,6 +86,12 @@ public class Player extends Entity {
             int npcIndex = gp.hitbox.checkEntity(this, gp.npc);
             interactNPC(npcIndex);
 
+            //CHECK EVENT
+            gp.handler.checkEvent();
+
+            gp.key.enter = false;
+
+
             //NULL
             if (!collisionOn) {
                 switch (direction) {
@@ -176,9 +182,6 @@ public class Player extends Entity {
                 gp.npc[i].speak();
             }
         }
-
-        gp.key.enter = false;
-
     }
 
     public void draw(Graphics2D g2) {

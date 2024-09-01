@@ -3,6 +3,7 @@ package main;
 import javax.swing.*;
 import java.awt.event.*;
 
+@SuppressWarnings("all")
 public class KeyHandler implements KeyListener{
 
     public boolean up, down, left, right, enter;

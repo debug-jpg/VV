@@ -42,6 +42,7 @@ public class Entity {
     }
 
     public void setAction() {}
+
     public void speak() {
 
         if (dialogs[dialogIndex] == null) {
