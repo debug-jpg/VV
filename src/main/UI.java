@@ -1,8 +1,7 @@
 package main;
 
+import entity.Entity;
 import object.Heart;
-import object.Key;
-import object.SuperObject;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -35,7 +34,7 @@ public class UI {
 //        keyImage = key.image;
 
         // CREATE HUD OBJECT
-        SuperObject heart = new Heart(gp);
+        Entity heart = new Heart(gp);
         heart_full = heart.image;
         heart_half = heart.image2;
         heart_blank = heart.image3;
@@ -220,6 +219,8 @@ public class UI {
         }
 
         else if (titleScreenState == 1) {
+            g2.setColor(new Color(0, 0, 0));
+            g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
 
             // CLASS SELECTION
             g2.setFont(jp);

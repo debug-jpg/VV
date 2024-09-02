@@ -1,9 +1,12 @@
 package main;
 
 import java.awt.*;
-import javax.swing.JPanel;
+import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import javax.swing.*;
 
-import object.SuperObject;
 import tile.TileManager;
 
 import entity.*;
@@ -12,14 +15,14 @@ import entity.*;
 public class GamePanel extends JPanel implements Runnable {
 
     //----------SCREEN----------//
-    final int originalTileSize = 32;
-    final int scale = 2;
+    final int originalTileSize = 16; // 16x16 Tile
+    final int scale = 3;
 
-    public final int tileSize = originalTileSize * scale;
-    public final int maxScreenCol = 16;
+    public final int tileSize = originalTileSize * scale; // 48x48 Upscaled
+    public final int maxScreenCol = 20;
     public final int maxScreenRow = 12;
-    public final int screenWidth = tileSize * maxScreenCol;
-    public final int screenHeight = tileSize * maxScreenRow;
+    public final int screenWidth = tileSize * maxScreenCol; // 960px
+    public final int screenHeight = tileSize * maxScreenRow; // 576px
 
 
     //----------WORLD----------//
@@ -27,6 +30,12 @@ public class GamePanel extends JPanel implements Runnable {
     public final int maxWorldRow = 50;
     public final int worldWidth = tileSize * maxWorldCol;
     public final int worldHeight = tileSize * maxWorldRow;
+
+    //----------FULL SCREEN----------//
+    public int fullScreenWidth = screenWidth;
+    public int fullScreenHeight = screenHeight;
+    BufferedImage tempScreen;
+    Graphics2D g2;
 
 
 
@@ -46,8 +55,9 @@ public class GamePanel extends JPanel implements Runnable {
 
     // ENTITIES and OBJECTS
     public Player player = new Player(this, key);
-    public SuperObject obj[] = new SuperObject[10];
+    public Entity obj[] = new Entity[10];
     public Entity npc[] = new Entity[10];
+    ArrayList<Entity> entityList = new ArrayList<>();
 
     // GAME STATE
     public int gameState;
@@ -70,6 +80,22 @@ public class GamePanel extends JPanel implements Runnable {
         assetSetter.setObject();
         assetSetter.setNPC();
         gameState = titleState;
+
+        tempScreen = new BufferedImage(screenWidth, screenHeight, BufferedImage.TYPE_INT_ARGB_PRE);
+        g2 = (Graphics2D) tempScreen.getGraphics();
+
+        setFullScreen();
+    }
+
+    public void setFullScreen() {
+
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        double width = screenSize.getWidth();
+        double height = screenSize.getHeight();
+        Main.frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        fullScreenWidth = (int) width;
+        fullScreenHeight = (int) height;
+
     }
 
     public void startGameThread() {
@@ -93,7 +119,8 @@ public class GamePanel extends JPanel implements Runnable {
 
             if (delta >= 1) {
                 update();
-                repaint();
+                drawTempScreen();
+                drawScreen();
                 delta--;
             }
 
@@ -117,9 +144,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     }
 
-    public void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        Graphics2D g2 = (Graphics2D) g;
+    public void drawTempScreen() {
 
         //---------- TITLE ----------//
         if (gameState == titleState) {
@@ -131,31 +156,53 @@ public class GamePanel extends JPanel implements Runnable {
             //---------- TILE ------------//
             tile.draw(g2);
 
-            //---------- OBJECT ----------//
-            for (int i = 0; i < obj.length; i++) {
-                if (obj[i] != null) {
-                    obj[i].draw(g2, this);
-                }
-            }
+            // ADDS ENTITIES
+            entityList.add(player);
 
-            //---------- NPC ----------//
             for (int i = 0; i < npc.length; i++) {
                 if (npc[i] != null) {
-                    npc[i].draw(g2);
+                    entityList.add(npc[i]);
                 }
             }
 
-            //---------- PLAYER ----------//
-            player.draw(g2);
+            for (int i = 0; i < obj.length; i++) {
+                if (obj[i] != null) {
+                    entityList.add(obj[i]);
+                }
+            }
+
+            // SORT
+            Collections.sort(entityList, new Comparator<Entity>() {
+                @Override
+                public int compare(Entity e1, Entity e2) {
+                    int result = Integer.compare(e1.worldY, e2.worldY);
+                    return result;
+                }
+            });
+
+            // DRAW ENTITIES
+            for (int i = 0; i < entityList.size(); i++) {
+                entityList.get(i).draw(g2);
+            }
+
+            // EMPTY ENTITIES
+            for (int i = 0; i < entityList.size(); i++) {
+                entityList.remove(i);
+            }
 
             //---------- UI ----------//
             ui.draw(g2);
 
         }
 
-        // --------------------- //
+    }
 
-        g2.dispose();
+    public void drawScreen() {
+
+        Graphics g = getGraphics();
+        g.drawImage(tempScreen, 0, 0, fullScreenWidth, fullScreenHeight, null);
+        g.dispose();
+
     }
 
     public void playMusic(int i) {
