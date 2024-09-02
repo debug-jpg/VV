@@ -17,7 +17,7 @@ public class Entity {
     public int speed;
 
     public BufferedImage up1, up2, down1, down2, left1, left2, right1, right2;
-    public String direction;
+    public String direction = "down";
 
     public int spriteCounter = 0;
     public int spriteNum = 1;
@@ -30,6 +30,11 @@ public class Entity {
 
     public String dialogs[] = new String[20];
     int dialogIndex = 0;
+
+    // SUPEROBJECTS
+    public BufferedImage image, image2, image3;
+    public String name;
+    public boolean collision = false;
 
     // CHARACTER STATS
     public int maxLife;

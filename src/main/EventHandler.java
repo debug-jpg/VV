@@ -1,8 +1,5 @@
 package main;
 
-import javax.swing.*;
-import java.awt.*;
-
 @SuppressWarnings("all")
 public class EventHandler {
 

@@ -1,6 +1,5 @@
 package main;
 
-import entity.Entity;
 import entity.NPC_OldMan;
 import object.*;
 
