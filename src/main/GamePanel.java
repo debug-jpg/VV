@@ -36,6 +36,7 @@ public class GamePanel extends JPanel implements Runnable {
     public int fullScreenHeight = screenHeight;
     BufferedImage tempScreen;
     Graphics2D g2;
+    public boolean fullScreen = false;
 
 
 
@@ -65,6 +66,7 @@ public class GamePanel extends JPanel implements Runnable {
     public final int playState = 1;
     public final int pauseState = 2;
     public final int dialogState = 3;
+    public final int optionState = 4;
 
 
 
