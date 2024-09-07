@@ -150,6 +150,10 @@ public class KeyHandler implements KeyListener{
         switch (gp.ui.subState) {
             case 0:
                 maxCommandNum = 5;
+                break;
+            case 2:
+                maxCommandNum = 1;
+                break;
         }
 
         if (code == KeyEvent.VK_W || code == KeyEvent.VK_UP) {
