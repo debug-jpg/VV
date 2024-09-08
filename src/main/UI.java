@@ -1,10 +1,13 @@
 package main;
 
 import entity.Entity;
+import object.Background;
 import object.Heart;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.File;
 
 @SuppressWarnings("all")
 public class UI {
@@ -12,7 +15,7 @@ public class UI {
     GamePanel gp;
     Graphics2D g2;
     Font arial, end, jp, jpTitle;
-    BufferedImage keyImage, heart_full, heart_half, heart_blank;
+    BufferedImage keyImage, heart_full, heart_half, heart_blank, bgImage, logoImg;
     public boolean messageOn = false;
     public String message = "";
     int messageCounter = 0;
@@ -30,6 +33,12 @@ public class UI {
         end = new Font("Arial", Font.BOLD, 80);
         jp = new Font("Meiryo", Font.PLAIN, 20);
         jpTitle = new Font("Meiryo", Font.BOLD, 80);
+
+        Entity background = new Background(gp);
+        bgImage = background.image;
+
+        Logo logo = new Logo(gp);
+        logoImg = logo.image;
 
 //        Key key = new Key(gp);
 //        keyImage = key.image;
@@ -162,8 +171,12 @@ public class UI {
     public void drawTitleScreen() {
 
         if (titleScreenState == 0) {
-            g2.setColor(new Color(0, 0, 0));
-            g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
+
+            // BG IMAGE
+            g2.drawImage(bgImage, 0, 0, null);
+
+            // LOGO IMAGE
+            g2.drawImage(logoImg, 0, 0, null);
 
             g2.setFont(jpTitle);
             String text = "VISUAL VENTURE";
@@ -177,11 +190,6 @@ public class UI {
             // MAIN COLOR
             g2.setColor(Color.white);
             g2.drawString(text, x, y);
-
-            // LOGO
-            x = gp.screenWidth / 2 - (gp.tileSize * 2) / 2;
-            y += gp.tileSize;
-            g2.drawImage(gp.player.down1, x, y, gp.tileSize * 2, gp.tileSize * 2, null);
 
             // MENU
             g2.setFont(arial);
@@ -224,8 +232,7 @@ public class UI {
         }
 
         else if (titleScreenState == 1) {
-            g2.setColor(new Color(0, 0, 0));
-            g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
+            g2.drawImage(bgImage, 0, 0, null);
 
             // CLASS SELECTION
             g2.setFont(jp);
@@ -504,7 +511,7 @@ public class UI {
         int textX = frameX + gp.tileSize;
         int textY = frameY + gp.tileSize * 3;
 
-        currentDialog = "Return to the title \nscreen?";
+        currentDialog = "Return to title screen?";
 
         for (String line: currentDialog.split("\n")) {
             g2.drawString(line, textX, textY);
@@ -564,7 +571,17 @@ public class UI {
 
 
 
+class Logo extends Entity {
 
+    UtilityTool tool = new UtilityTool();
+
+    public Logo(GamePanel gp) {
+        super(gp);
+
+        image = setup("/background/camhi");
+    }
+
+}
 
 
 

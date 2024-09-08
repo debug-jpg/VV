@@ -58,6 +58,7 @@ public class GamePanel extends JPanel implements Runnable {
     public Player player = new Player(this, key);
     public Entity obj[] = new Entity[10];
     public Entity npc[] = new Entity[10];
+    public Entity bg[] = new Entity[10];
     ArrayList<Entity> entityList = new ArrayList<>();
 
     // GAME STATE
@@ -81,6 +82,7 @@ public class GamePanel extends JPanel implements Runnable {
     public void setupGame() {
         assetSetter.setObject();
         assetSetter.setNPC();
+        assetSetter.setBackground();
         gameState = titleState;
 
         tempScreen = new BufferedImage(screenWidth, screenHeight, BufferedImage.TYPE_INT_ARGB_PRE);

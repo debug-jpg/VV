@@ -16,7 +16,7 @@ public class Entity {
     public int worldX, worldY;
     public int speed;
 
-    public BufferedImage up1, up2, down1, down2, left1, left2, right1, right2;
+    public BufferedImage up1, up2, down1, down2, left1, left2, right1, right2, bgImage;
     public String direction = "down";
 
     public int spriteCounter = 0;
@@ -112,11 +112,6 @@ public class Entity {
 
     }
 
-
-
-
-
-
     public void draw(Graphics2D g2) {
 
         BufferedImage image = null;
@@ -185,11 +180,6 @@ public class Entity {
 
         }
     }
-
-
-
-
-
 
     public BufferedImage setup(String imagePath) {
 
