@@ -1,13 +1,12 @@
 package main;
 
 import entity.Entity;
-import object.Background;
 import object.Heart;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
+import java.io.IOException;
 
 @SuppressWarnings("all")
 public class UI {
@@ -15,7 +14,7 @@ public class UI {
     GamePanel gp;
     Graphics2D g2;
     Font arial, end, jp, jpTitle;
-    BufferedImage keyImage, heart_full, heart_half, heart_blank, bgImage, logoImg;
+    BufferedImage keyImage, heart_full, heart_half, heart_blank, bgImage, logoImg, titleImg;
     public boolean messageOn = false;
     public String message = "";
     int messageCounter = 0;
@@ -34,11 +33,26 @@ public class UI {
         jp = new Font("Meiryo", Font.PLAIN, 20);
         jpTitle = new Font("Meiryo", Font.BOLD, 80);
 
-        Entity background = new Background(gp);
-        bgImage = background.image;
+        // BACKGROUND IMAGE
 
-        Logo logo = new Logo(gp);
-        logoImg = logo.image;
+
+        try {
+
+            BufferedImage backgroundImage = ImageIO.read(getClass().getResourceAsStream("/background/bg_main.png"));
+            BufferedImage logoImage = ImageIO.read(getClass().getResourceAsStream("/background/CamhiLogo.png"));
+            BufferedImage title = ImageIO.read(getClass().getResourceAsStream("/background/title.png"));
+            bgImage = backgroundImage;
+            logoImg = logoImage;
+            titleImg = title;
+
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+
+        // BACKGROUND IMAGE
 
 //        Key key = new Key(gp);
 //        keyImage = key.image;
@@ -176,7 +190,7 @@ public class UI {
             g2.drawImage(bgImage, 0, 0, null);
 
             // LOGO IMAGE
-            g2.drawImage(logoImg, 0, 0, null);
+            g2.drawImage(logoImg, 0, 0, gp.tileSize * 3, gp.tileSize * 3, null);
 
             g2.setFont(jpTitle);
             String text = "VISUAL VENTURE";
@@ -571,17 +585,10 @@ public class UI {
 
 
 
-class Logo extends Entity {
 
-    UtilityTool tool = new UtilityTool();
 
-    public Logo(GamePanel gp) {
-        super(gp);
 
-        image = setup("/background/camhi");
-    }
 
-}
 
 
 

@@ -149,7 +149,7 @@ public class KeyHandler implements KeyListener{
         int maxCommandNum = 0;
         switch (gp.ui.subState) {
             case 0:
-                maxCommandNum = 5;
+                maxCommandNum = 4;
                 break;
             case 2:
                 maxCommandNum = 1;
@@ -171,22 +171,22 @@ public class KeyHandler implements KeyListener{
 
         if (code == KeyEvent.VK_A || code == KeyEvent.VK_LEFT) {
             if (gp.ui.subState == 0) {
-                if (gp.ui.commandNum == 1 && gp.music.volumeScale > 0) {
+                if (gp.ui.commandNum == 0 && gp.music.volumeScale > 0) {
                     gp.music.volumeScale--;
                     gp.music.checkVolume();
                 }
-                if (gp.ui.commandNum == 2 && gp.effects.volumeScale > 0) {
+                if (gp.ui.commandNum == 1 && gp.effects.volumeScale > 0) {
                     gp.effects.volumeScale--;
                 }
             }
         }
         if (code == KeyEvent.VK_D || code == KeyEvent.VK_RIGHT) {
             if (gp.ui.subState == 0) {
-                if (gp.ui.commandNum == 1 && gp.music.volumeScale < 5) {
+                if (gp.ui.commandNum == 0 && gp.music.volumeScale < 5) {
                     gp.music.volumeScale++;
                     gp.music.checkVolume();
                 }
-                if (gp.ui.commandNum == 2 && gp.effects.volumeScale < 5) {
+                if (gp.ui.commandNum == 1 && gp.effects.volumeScale < 5) {
                     gp.effects.volumeScale++;
                 }
             }

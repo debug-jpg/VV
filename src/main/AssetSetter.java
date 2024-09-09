@@ -1,6 +1,5 @@
 package main;
 
-import object.Background;
 import entity.NPC_OldMan;
 import object.*;
 
@@ -51,14 +50,6 @@ public class AssetSetter {
         gp.npc[0] = new NPC_OldMan(gp);
         gp.npc[0].worldX = gp.tileSize * 21;
         gp.npc[0].worldY = gp.tileSize * 21;
-
-    }
-
-    public void setBackground() {
-
-        gp.bg[0] = new Background(gp);
-        gp.bg[0].worldX = gp.tileSize;
-        gp.bg[0].worldY = gp.tileSize;
 
     }
 }
