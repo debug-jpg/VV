@@ -14,7 +14,7 @@ public class UI {
     GamePanel gp;
     Graphics2D g2;
     Font arial, end, jp, jpTitle;
-    BufferedImage keyImage, heart_full, heart_half, heart_blank, bgImage, logoImg, titleImg;
+    BufferedImage heart_full, heart_half, heart_blank, bgImage, logoImg, titleImg;
     public boolean messageOn = false;
     public String message = "";
     int messageCounter = 0;
@@ -190,7 +190,7 @@ public class UI {
             g2.drawImage(bgImage, 0, 0, null);
 
             // LOGO IMAGE
-            g2.drawImage(logoImg, 0, 0, gp.tileSize * 3, gp.tileSize * 3, null);
+            g2.drawImage(logoImg, 0, 0, gp.tileSize * 2, gp.tileSize * 2, null);
 
             g2.setFont(jpTitle);
             String text = "VISUAL VENTURE";
@@ -273,6 +273,15 @@ public class UI {
             g2.drawString(text, x, y);
 
             if (commandNum == 1) {
+                g2.drawString(">", x - gp.tileSize, y);
+            }
+
+            text = "BACK";
+            x = getXforCenteredText(text);
+            y += gp.tileSize * 2;
+            g2.drawString(text, x, y);
+
+            if (commandNum == 2) {
                 g2.drawString(">", x - gp.tileSize, y);
             }
 
