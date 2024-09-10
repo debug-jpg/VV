@@ -3,10 +3,7 @@ package entity;
 import main.*;
 
 import java.awt.*;
-import java.io.IOException;
 import java.awt.image.*;
-
-import javax.imageio.ImageIO;
 
 @SuppressWarnings("all")
 public class Player extends Entity {
