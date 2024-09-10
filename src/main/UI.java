@@ -253,12 +253,12 @@ public class UI {
             g2.setColor(Color.white);
             g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 42));
 
-            String text = "Who's my crush?";
+            String text = "CHOOSE CHARACTER";
             int x = getXforCenteredText(text);
             int y = gp.tileSize * 3;
             g2.drawString(text, x, y);
 
-            text = "初音ミク";
+            text = "Tsukasa";
             x = getXforCenteredText(text);
             y += gp.tileSize * 3;
             g2.drawString(text, x, y);
@@ -267,30 +267,12 @@ public class UI {
                 g2.drawString(">", x - gp.tileSize, y);
             }
 
-            text = "重音テト";
+            text = "Saki";
             x = getXforCenteredText(text);
             y += gp.tileSize;
             g2.drawString(text, x, y);
 
             if (commandNum == 1) {
-                g2.drawString(">", x - gp.tileSize, y);
-            }
-
-            text = "亞北ネル";
-            x = getXforCenteredText(text);
-            y += gp.tileSize;
-            g2.drawString(text, x, y);
-
-            if (commandNum == 2) {
-                g2.drawString(">", x - gp.tileSize, y);
-            }
-
-            text = "戻る";
-            x = getXforCenteredText(text);
-            y += gp.tileSize * 2;
-            g2.drawString(text, x, y);
-
-            if (commandNum == 3) {
                 g2.drawString(">", x - gp.tileSize, y);
             }
 
