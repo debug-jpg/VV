@@ -51,7 +51,8 @@ public class GamePanel extends JPanel implements Runnable {
     Thread gameThread;
 
     // ENTITIES and OBJECTS
-    public Player player = new Player(this, key);
+    public Saki saki = new Saki(this, key);
+    public Tsukasa tsukasa = new Tsukasa(this, key);
     public Entity obj[] = new Entity[10];
     public Entity npc[] = new Entity[10];
     ArrayList<Entity> entityList = new ArrayList<>();
@@ -128,7 +129,7 @@ public class GamePanel extends JPanel implements Runnable {
     public void update() {
 
         if (gameState == playState) {
-            player.update();
+            saki.update();
 
             for (int i = 0; i < npc.length; i++) {
                 if (npc[i] != null) {
@@ -155,7 +156,7 @@ public class GamePanel extends JPanel implements Runnable {
             tile.draw(g2);
 
             // ADDS ENTITIES
-            entityList.add(player);
+            entityList.add(saki);
 
             for (int i = 0; i < npc.length; i++) {
                 if (npc[i] != null) {

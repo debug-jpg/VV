@@ -39,8 +39,8 @@ public class EventHandler {
 
     public void checkEvent() {
         //If player is > 1 tile then check
-        int xDistance = Math.abs(gp.player.worldX - previousEventX);
-        int yDistance = Math.abs(gp.player.worldY - previousEventY);
+        int xDistance = Math.abs(gp.saki.worldX - previousEventX);
+        int yDistance = Math.abs(gp.saki.worldY - previousEventY);
         int distance = Math.max(xDistance, yDistance);
         if (distance > gp.tileSize) {
             canTouchEvent = true;
@@ -58,22 +58,22 @@ public class EventHandler {
 
         boolean hit = false;
 
-        gp.player.solidArea.x = gp.player.worldX + gp.player.solidArea.x;
-        gp.player.solidArea.y = gp.player.worldY + gp.player.solidArea.y;
+        gp.saki.solidArea.x = gp.saki.worldX + gp.saki.solidArea.x;
+        gp.saki.solidArea.y = gp.saki.worldY + gp.saki.solidArea.y;
         eventRect[col][row].x = col * gp.tileSize + eventRect[col][row].x;
         eventRect[col][row].y = row * gp.tileSize + eventRect[col][row].y;
 
-        if (gp.player.solidArea.intersects(eventRect[col][row]) && eventRect[col][row].eventDone == false) {
-            if (gp.player.direction.contentEquals(reqDirection) || reqDirection.contentEquals("any")) {
+        if (gp.saki.solidArea.intersects(eventRect[col][row]) && eventRect[col][row].eventDone == false) {
+            if (gp.saki.direction.contentEquals(reqDirection) || reqDirection.contentEquals("any")) {
                 hit = true;
 
-                previousEventX = gp.player.worldX;
-                previousEventY = gp.player.worldY;
+                previousEventX = gp.saki.worldX;
+                previousEventY = gp.saki.worldY;
             }
         }
 
-        gp.player.solidArea.x = gp.player.solidAreaDefaultX;
-        gp.player.solidArea.y = gp.player.solidAreaDefaultY;
+        gp.saki.solidArea.x = gp.saki.solidAreaDefaultX;
+        gp.saki.solidArea.y = gp.saki.solidAreaDefaultY;
         eventRect[col][row].x = eventRect[col][row].eventRectDefaultX;
         eventRect[col][row].y = eventRect[col][row].eventRectDefaultY;
 
@@ -86,7 +86,7 @@ public class EventHandler {
 
         gp.gameState = gameState;
         gp.ui.currentDialog = "You fall to my...";
-        gp.player.life -= 1;
+        gp.saki.life -= 1;
 //        eventRect[col][row].eventDone = true;
         canTouchEvent = false;
 
@@ -97,7 +97,7 @@ public class EventHandler {
         if (gp.key.enter == true) {
             gp.gameState = gameState;
             gp.ui.currentDialog = "I love you!!!";
-            gp.player.life = gp.player.maxLife;
+            gp.saki.life = gp.saki.maxLife;
         }
 
     }

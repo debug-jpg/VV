@@ -16,7 +16,11 @@ public class Entity {
     public int worldX, worldY;
     public int speed;
 
-    public BufferedImage up1, up2, down1, down2, left1, left2, right1, right2, bgImage;
+    public BufferedImage
+
+            up1, up2, down1, down2, left1, left2, right1, right2, bgImage,
+            idleUp, idleDown, idleLeft, idleRight;
+
     public String direction = "down";
 
     public int spriteCounter = 0;
@@ -48,6 +52,11 @@ public class Entity {
 
     public void setAction() {}
 
+    /**
+     * Initiates a speaking action for the entity, displaying a dialog and adjusting the entity's direction based on the player's direction.
+     *
+     * @return  None
+     */
     public void speak() {
 
         if (dialogs[dialogIndex] == null) {
@@ -56,7 +65,7 @@ public class Entity {
         gp.ui.currentDialog = dialogs[dialogIndex];
         dialogIndex++;
 
-        switch (gp.player.direction) {
+        switch (gp.saki.direction) {
             case "up":
                 direction = "down";
                 break;
@@ -73,6 +82,11 @@ public class Entity {
 
     }
 
+    /**
+     * Updates the entity's state, performing actions such as setting the entity's action, checking for collisions, and updating the entity's position and sprite.
+     *
+     * @return  None
+     */
     public void update() {
 
         setAction();
@@ -112,17 +126,23 @@ public class Entity {
 
     }
 
+    /**
+     * Draws the entity on the screen using the provided Graphics2D object.
+     *
+     * @param  g2  the Graphics2D object used for drawing
+     * @return     None
+     */
     public void draw(Graphics2D g2) {
 
         BufferedImage image = null;
 
-        int screenX = worldX - gp.player.worldX + gp.player.screenX;
-        int screenY = worldY - gp.player.worldY + gp.player.screenY;
+        int screenX = worldX - gp.saki.worldX + gp.saki.screenX;
+        int screenY = worldY - gp.saki.worldY + gp.saki.screenY;
 
-        if (worldX + gp.tileSize > gp.player.worldX - gp.player.screenX &&
-                worldX - gp.tileSize < gp.player.worldX + gp.player.screenX &&
-                worldY + gp.tileSize > gp.player.worldY - gp.player.screenY &&
-                worldY - gp.tileSize < gp.player.worldY + gp.player.screenY) {
+        if (worldX + gp.tileSize > gp.saki.worldX - gp.saki.screenX &&
+                worldX - gp.tileSize < gp.saki.worldX + gp.saki.screenX &&
+                worldY + gp.tileSize > gp.saki.worldY - gp.saki.screenY &&
+                worldY - gp.tileSize < gp.saki.worldY + gp.saki.screenY) {
 
 
             switch (direction) {
@@ -181,6 +201,12 @@ public class Entity {
         }
     }
 
+    /**
+     * Sets up a BufferedImage by reading an image from the specified path and scaling it to the game's tile size.
+     *
+     * @param  imagePath	the path to the image file
+     * @return         	the scaled BufferedImage
+     */
     public BufferedImage setup(String imagePath) {
 
         UtilityTool tool = new UtilityTool();

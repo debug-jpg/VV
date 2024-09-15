@@ -2,6 +2,7 @@ package main;
 
 import entity.Entity;
 
+@SuppressWarnings("all")
 public class CollisionChecker {
 
     GamePanel gp;
@@ -217,14 +218,14 @@ public class CollisionChecker {
         entity.solidArea.y = entity.worldY + entity.solidArea.y;
 
         //---------- Get object's solid area position ----------//
-        gp.player.solidArea.x = gp.player.worldX + gp.player.solidArea.x;
-        gp.player.solidArea.y = gp.player.worldY + gp.player.solidArea.y;
+        gp.saki.solidArea.x = gp.saki.worldX + gp.saki.solidArea.x;
+        gp.saki.solidArea.y = gp.saki.worldY + gp.saki.solidArea.y;
 
         switch (entity.direction) {
             case "up":
 
                 entity.solidArea.y -= entity.speed;
-                if (entity.solidArea.intersects(gp.player.solidArea)) {
+                if (entity.solidArea.intersects(gp.saki.solidArea)) {
                     entity.collisionOn = true;
                 }
 
@@ -233,7 +234,7 @@ public class CollisionChecker {
             case "down":
 
                 entity.solidArea.y += entity.speed;
-                if (entity.solidArea.intersects(gp.player.solidArea)) {
+                if (entity.solidArea.intersects(gp.saki.solidArea)) {
                     entity.collisionOn = true;
                 }
 
@@ -242,7 +243,7 @@ public class CollisionChecker {
             case "left":
 
                 entity.solidArea.x -= entity.speed;
-                if (entity.solidArea.intersects(gp.player.solidArea)) {
+                if (entity.solidArea.intersects(gp.saki.solidArea)) {
                     entity.collisionOn = true;
                 }
 
@@ -251,7 +252,7 @@ public class CollisionChecker {
             case "right":
 
                 entity.solidArea.x += entity.speed;
-                if (entity.solidArea.intersects(gp.player.solidArea)) {
+                if (entity.solidArea.intersects(gp.saki.solidArea)) {
                     entity.collisionOn = true;
                 }
 
@@ -259,8 +260,8 @@ public class CollisionChecker {
         }
         entity.solidArea.x = entity.solidAreaDefaultX;
         entity.solidArea.y = entity.solidAreaDefaultY;
-        gp.player.solidArea.x = gp.player.solidAreaDefaultX;
-        gp.player.solidArea.y = gp.player.solidAreaDefaultY;
+        gp.saki.solidArea.x = gp.saki.solidAreaDefaultX;
+        gp.saki.solidArea.y = gp.saki.solidAreaDefaultY;
 
     }
 }
