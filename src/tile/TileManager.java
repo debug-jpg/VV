@@ -19,26 +19,45 @@ public class TileManager {
 
     public TileManager(GamePanel gp) {
         this.gp = gp;
-        tile = new Tile[20];
+        tile = new Tile[30];
         mapTileNum = new int[gp.maxWorldCol][gp.maxWorldRow];
 
         getTileImage();
-        loadMap("/maps/testMap.txt");
+        loadMap("/maps/testMap2.txt");
     }
 
     public void getTileImage() {
 
-            setup(0, "grass", false);
-            setup(1, "wall", true);
-            setup(2, "water", true);
-            setup(3, "earth", false);
-            setup(4, "tree2", true);
-            setup(5, "tree2", true);
-            setup(6, "sand", false);
-            setup(7, "ground", false);
-            setup(8, "groundh", false);
-            setup(9, "lake2", true);
-            setup(10, "red_house", true);
+//            setup(0, "grass", false);
+//            setup(1, "wall", true);
+//            setup(2, "water", true);
+//            setup(3, "earth", false);
+//            setup(4, "tree2", true);
+//            setup(5, "tree2", true);
+//            setup(6, "sand", false);
+//            setup(7, "ground", false);
+//            setup(8, "groundh", false);
+//            setup(9, "lake2", true);
+//            setup(10, "red_house", true);
+
+        setup(0, "Path_Middle", false);
+        setup(1, "path_obj1", false);
+        setup(2, "path_obj2", false);
+        setup(3, "path_obj3", false);
+        setup(4, "Grass_Middle", false);
+        setup(5, "grass_obj1", false);
+        setup(6, "grass_obj2", false);
+        setup(7, "grass_obj3", false);
+        setup(8, "farmland_topleft", false);
+        setup(9, "farmland_topmid", false);
+        setup(10, "farmland_topright", false);
+        setup(11, "farmland_midleft", false);
+        setup(12, "farmland_mid", false);
+        setup(13, "farmland_midright", false);
+        setup(14, "farmland_bottomleft", false);
+        setup(15, "farmland_bottommid", false);
+        setup(16, "farmland_bottomright", false);
+        setup(17, "tree", true);
 
     }
 
