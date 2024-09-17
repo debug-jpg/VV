@@ -19,11 +19,11 @@ public class TileManager {
 
     public TileManager(GamePanel gp) {
         this.gp = gp;
-        tile = new Tile[10];
+        tile = new Tile[20];
         mapTileNum = new int[gp.maxWorldCol][gp.maxWorldRow];
 
         getTileImage();
-        loadMap("/maps/world01.txt");
+        loadMap("/maps/testMap.txt");
     }
 
     public void getTileImage() {
@@ -32,8 +32,13 @@ public class TileManager {
             setup(1, "wall", true);
             setup(2, "water", true);
             setup(3, "earth", false);
-            setup(4, "tree", true);
-            setup(5, "sand", false);
+            setup(4, "tree2", true);
+            setup(5, "tree2", true);
+            setup(6, "sand", false);
+            setup(7, "ground", false);
+            setup(8, "groundh", false);
+            setup(9, "lake2", true);
+            setup(10, "red_house", true);
 
     }
 
@@ -65,9 +70,13 @@ public class TileManager {
 
                 while (col < gp.maxWorldCol) {
                     String numbers[] = line.split(" ");
-                    int num = Integer.parseInt(numbers[col]);
+                    if (col < numbers.length) {
+                        int num = Integer.parseInt(numbers[col]);
 
-                    mapTileNum[col][row] = num;
+                        if (col < mapTileNum.length && row < mapTileNum[col].length) {
+                            mapTileNum[col][row] = num;
+                        }
+                    }
                     col++;
                 }
 
