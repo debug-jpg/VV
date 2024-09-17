@@ -57,7 +57,16 @@ public class TileManager {
         setup(14, "farmland_bottomleft", false);
         setup(15, "farmland_bottommid", false);
         setup(16, "farmland_bottomright", false);
-        setup(17, "tree", true);
+        setup(17, "tree_branch", true);
+        setup(18, "tree_branch_path", true);
+        setup(19, "path_log_left", true);
+        setup(20, "path_log_right", true);
+        setup(21, "grass_log_left", true);
+        setup(22, "grass_log_right", true);
+        setup(23, "grass_rock", true);
+        setup(24, "grass_rock_big", true);
+        setup(25, "path_rock", true);
+        setup(26, "path_rock_big", true);
 
     }
 
