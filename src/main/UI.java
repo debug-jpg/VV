@@ -48,6 +48,7 @@ public class UI {
         }
         catch (IOException e) {
             e.printStackTrace();
+            System.exit(0);
         }
 
 
@@ -145,9 +146,7 @@ public class UI {
             drawDialogScreen();
         }
         if (gp.gameState == gp.optionState) {
-
             drawOptionScreen();
-
         }
     }
 

@@ -1,8 +1,5 @@
 package main;
 
-import entity.NPC_OldMan;
-import object.*;
-
 public class AssetSetter {
 
     GamePanel gp;
