@@ -216,7 +216,7 @@ public class UI {
                 g2.drawString(">", x - gp.tileSize, y);
             }
 
-            text = "ABOUT";
+            text = "HELP";
             x = getXforCenteredText(text);
             y += gp.tileSize;
             g2.drawString(text, x, y);
@@ -225,7 +225,7 @@ public class UI {
                 g2.drawString(">", x - gp.tileSize, y);
             }
 
-            text = "HELP";
+            text = "ABOUT";
             x = getXforCenteredText(text);
             y += gp.tileSize;
             g2.drawString(text, x, y);
@@ -283,6 +283,67 @@ public class UI {
             if (commandNum == 2) {
                 g2.drawString(">", x - gp.tileSize, y);
             }
+
+        }
+
+        else if (titleScreenState == 2) {
+            g2.drawImage(bgImage, 0, 0, null);
+
+            g2.setFont(arial);
+            g2.setColor(Color.BLACK);
+            g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 60));
+
+            String title = "HOW TO PLAY";
+            int x = getXforCenteredText(title);
+            int y = gp.tileSize * 2;
+            g2.drawString(title, x, y);
+
+            g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 32));
+            String text = "1. Start your journey: Begin with 10 points and embark";
+            x = gp.tileSize * 2;
+            y += gp.tileSize * 2;
+            g2.drawString(text, x, y);
+
+            text = "on your adventure through the Philippines.";
+            x = gp.tileSize * 2;
+            y += gp.tileSize;
+            g2.drawString(text, x, y);
+
+            text = "2. Unlock obstacles: Answer questions to unlock";
+            x = gp.tileSize * 2;
+            y += gp.tileSize;
+            g2.drawString(text, x, y);
+
+            text = "obstacles and continue your journey.";
+            x = gp.tileSize * 2;
+            y += gp.tileSize;
+            g2.drawString(text, x, y);
+
+            text = "3. Earn points: Correct answers will earn you 10 points,";
+            x = gp.tileSize * 2;
+            y += gp.tileSize;
+            g2.drawString(text, x, y);
+
+            text = "while incorrect answers will deduct 3 points.";
+            x = gp.tileSize * 2;
+            y += gp.tileSize;
+            g2.drawString(text, x, y);
+
+            text = "4. Reach your destination: Accumulate 50 points to reach";
+            x = gp.tileSize * 2;
+            y += gp.tileSize;
+            g2.drawString(text, x, y);
+
+            text = "beautiful destination and complete your journey.";
+            x = gp.tileSize * 2;
+            y += gp.tileSize;
+            g2.drawString(text, x, y);
+
+            g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 20));
+            text = "Press ESC to back";
+            x = gp.tileSize;
+            y = gp.tileSize;
+            g2.drawString(text, x, y);
 
         }
 

@@ -49,7 +49,7 @@ public class KeyHandler implements KeyListener{
                         gp.ui.titleScreenState = 1;
                     }
                     if (gp.ui.commandNum == 1) {
-                        JOptionPane.showMessageDialog(null, "Coming Soon...");
+                        gp.ui.titleScreenState = 2;
                     }
                     if (gp.ui.commandNum == 2) {
                         JOptionPane.showMessageDialog(null, "Coming Soon...");
@@ -92,6 +92,12 @@ public class KeyHandler implements KeyListener{
                         gp.ui.titleScreenState = 0;
                         gp.ui.commandNum = 0;
                     }
+                }
+            }
+
+            else if (gp.ui.titleScreenState == 2) {
+                if (code == KeyEvent.VK_ESCAPE) {
+                    gp.ui.titleScreenState = 0;
                 }
             }
         }
