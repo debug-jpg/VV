@@ -320,6 +320,13 @@ public class UI {
             y += 40;
         }
 
+        x = gp.tileSize * 2;
+        y = (gp.tileSize * 6) / 2;
+        width = gp.screenWidth - (gp.tileSize * 6);
+        height = gp.tileSize * 3;
+
+        drawSubWindow(x, y, width, height);
+
     }
 
     public void drawOptionScreen() {
