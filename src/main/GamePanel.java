@@ -13,8 +13,9 @@ import entity.*;
 
 @SuppressWarnings("all")
 public class GamePanel extends JPanel implements Runnable {
+    TileManager tile = new TileManager(this);
 
-    //----------SCREEN----------//
+    // ----------SCREEN----------//
     final int originalTileSize = 16; // 16x16 Tile
     final int scale = 3;
 
@@ -24,14 +25,16 @@ public class GamePanel extends JPanel implements Runnable {
     public final int screenWidth = tileSize * maxScreenCol; // 960px
     public final int screenHeight = tileSize * maxScreenRow; // 576px
 
+    public int ScreenWidth = screenWidth;
+    public int ScreenHeight = screenHeight;
 
-    //----------WORLD----------//
+    // ----------WORLD----------//
     public final int maxWorldCol = 50;
     public final int maxWorldRow = 50;
     public final int worldWidth = tileSize * maxWorldCol;
     public final int worldHeight = tileSize * maxWorldRow;
 
-    //----------FULL SCREEN----------//
+    // ----------FULL SCREEN----------//
     public int fullScreenWidth = screenWidth;
     public int fullScreenHeight = screenHeight;
     BufferedImage tempScreen;
@@ -40,7 +43,7 @@ public class GamePanel extends JPanel implements Runnable {
     int FPS = 60;
 
     // Initiate
-    TileManager tile = new TileManager(this);
+
     public KeyHandler key = new KeyHandler(this);
     Sound music = new Sound();
     Sound effects = new Sound();
@@ -52,7 +55,6 @@ public class GamePanel extends JPanel implements Runnable {
 
     // ENTITIES and OBJECTS
     public Saki saki = new Saki(this, key);
-    public Tsukasa tsukasa = new Tsukasa(this, key);
     public Entity obj[] = new Entity[10];
     public Entity npc[] = new Entity[10];
     ArrayList<Entity> entityList = new ArrayList<>();
@@ -65,8 +67,6 @@ public class GamePanel extends JPanel implements Runnable {
     public final int dialogState = 3;
     public final int optionState = 4;
 
-
-
     public GamePanel() {
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setBackground(Color.BLACK);
@@ -74,7 +74,7 @@ public class GamePanel extends JPanel implements Runnable {
         this.addKeyListener(key);
         this.setFocusable(true);
     }
-    
+
     public void setupGame() {
         assetSetter.setObject();
         assetSetter.setNPC();
@@ -145,14 +145,14 @@ public class GamePanel extends JPanel implements Runnable {
 
     public void drawTempScreen() {
 
-        //---------- TITLE ----------//
+        // ---------- TITLE ----------//
         if (gameState == titleState) {
             ui.draw(g2);
         }
-        //---------- OTHERS ----------//
+        // ---------- OTHERS ----------//
         else {
 
-            //---------- TILE ------------//
+            // ---------- TILE ------------//
             tile.draw(g2);
 
             // ADDS ENTITIES
@@ -189,7 +189,7 @@ public class GamePanel extends JPanel implements Runnable {
                 entityList.remove(i);
             }
 
-            //---------- UI ----------//
+            // ---------- UI ----------//
             ui.draw(g2);
 
         }
@@ -218,22 +218,18 @@ public class GamePanel extends JPanel implements Runnable {
         effects.setFile(i);
         effects.play();
     }
+
+    public int getScreenWidth() {
+        return ScreenWidth;
+    }
+
+    public int getScreenHeight() {
+        return ScreenHeight;
+    }
+
+    public int getButton() {
+        return button;
+    }
+
+    int button;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

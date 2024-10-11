@@ -34,7 +34,7 @@ public class Saki extends Entity {
 
     public void setDefaultValues() {
 
-        worldX = gp.tileSize * 5;
+        worldX = gp.tileSize * 17;
         worldY = gp.tileSize * 21;
         speed = 4;
         direction = "down";

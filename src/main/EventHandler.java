@@ -4,6 +4,8 @@ package main;
 public class EventHandler {
 
     GamePanel gp;
+    AssetSetter setter;
+    QuizManager quizManager = new QuizManager(gp);
     EventRect eventRect[][];
 
     int previousEventX, previousEventY;
@@ -22,8 +24,8 @@ public class EventHandler {
             eventRect[col][row] = new EventRect();
             eventRect[col][row].x = 23;
             eventRect[col][row].y = 23;
-            eventRect[col][row].width = 23;
-            eventRect[col][row].height = 23;
+            eventRect[col][row].width = 2;
+            eventRect[col][row].height = 2;
             eventRect[col][row].eventRectDefaultX = eventRect[col][row].x;
             eventRect[col][row].eventRectDefaultY = eventRect[col][row].y;
 
@@ -38,7 +40,7 @@ public class EventHandler {
     }
 
     public void checkEvent() {
-        //If player is > 1 tile then check
+        // If player is > 1 tile then check
         int xDistance = Math.abs(gp.saki.worldX - previousEventX);
         int yDistance = Math.abs(gp.saki.worldY - previousEventY);
         int distance = Math.max(xDistance, yDistance);
@@ -47,11 +49,14 @@ public class EventHandler {
         }
 
         if (canTouchEvent) {
-            if (hit(24, 9, "right") == true) { damagePit(24, 9, gp.dialogState); }
-            if (hit(23, 7, "up") == true) { healingPool(23, 7, gp.dialogState); }
+            if (hit(17, 13, "up") == true) {
+                damagePit(24, 9, gp.dialogState);
+            }
+            if (hit(23, 7, "up") == true) {
+                healingPool(23, 7, gp.dialogState);
+            }
         }
 
-        
     }
 
     public boolean hit(int col, int row, String reqDirection) {
@@ -77,17 +82,13 @@ public class EventHandler {
         eventRect[col][row].x = eventRect[col][row].eventRectDefaultX;
         eventRect[col][row].y = eventRect[col][row].eventRectDefaultY;
 
-
         return hit;
 
     }
 
     public void damagePit(int col, int row, int gameState) {
-
         gp.gameState = gameState;
-        gp.ui.currentDialog = "You fall to my...";
-        gp.saki.life -= 1;
-//        eventRect[col][row].eventDone = true;
+        gp.ui.currentDialog = quizManager.Question;
         canTouchEvent = false;
 
     }
@@ -103,20 +104,3 @@ public class EventHandler {
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

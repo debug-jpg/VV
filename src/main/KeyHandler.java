@@ -46,13 +46,14 @@ public class KeyHandler implements KeyListener{
                 }
                 if (code == KeyEvent.VK_ENTER) {
                     if (gp.ui.commandNum == 0) {
-                        gp.ui.titleScreenState = 1;
+                        gp.gameState = gp.playState;
+//                        gp.playMusic(1);
                     }
                     if (gp.ui.commandNum == 1) {
-                        gp.ui.titleScreenState = 2;
+                        gp.ui.titleScreenState = 1;
                     }
                     if (gp.ui.commandNum == 2) {
-                        JOptionPane.showMessageDialog(null, "Coming Soon...");
+                        gp.ui.titleScreenState = 2;
                     }
                     if (gp.ui.commandNum == 3) {
                         int confirm = JOptionPane.showConfirmDialog(null, "ゲームを終了します。", "確認", JOptionPane.YES_NO_OPTION);
@@ -64,34 +65,8 @@ public class KeyHandler implements KeyListener{
             }
 
             else if (gp.ui.titleScreenState == 1) {
-
-                if (code == KeyEvent.VK_W || code == KeyEvent.VK_UP) {
-                    gp.ui.commandNum--;
-                    if (gp.ui.commandNum < 0) {
-                        gp.ui.commandNum = 2;
-                    }
-                }
-                if (code == KeyEvent.VK_S || code == KeyEvent.VK_DOWN) {
-                    gp.ui.commandNum++;
-                    if (gp.ui.commandNum > 2) {
-                        gp.ui.commandNum = 0;
-                    }
-                }
-                if (code == KeyEvent.VK_ENTER) {
-                    if (gp.ui.commandNum == 0) {
-                        System.err.println("Tenma");
-                        gp.gameState = gp.playState;
-//                        gp.playMusic(0);
-                    }
-                    if (gp.ui.commandNum == 1) {
-                        System.err.println("Tenma");
-                        gp.gameState = gp.playState;
-//                        gp.playMusic(0);
-                    }
-                    if (gp.ui.commandNum == 2) {
-                        gp.ui.titleScreenState = 0;
-                        gp.ui.commandNum = 0;
-                    }
+                if (code == KeyEvent.VK_ESCAPE) {
+                    gp.ui.titleScreenState = 0;
                 }
             }
 
