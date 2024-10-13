@@ -51,6 +51,7 @@ public class GamePanel extends JPanel implements Runnable {
     public AssetSetter assetSetter = new AssetSetter(this);
     public UI ui = new UI(this);
     public EventHandler handler = new EventHandler(this);
+    public MouseHandler mouse = new MouseHandler();
     Thread gameThread;
 
     // ENTITIES and OBJECTS
@@ -141,6 +142,8 @@ public class GamePanel extends JPanel implements Runnable {
             // -----
         }
 
+        button = mouse.getButton();
+
     }
 
     public void drawTempScreen() {
@@ -219,12 +222,12 @@ public class GamePanel extends JPanel implements Runnable {
         effects.play();
     }
 
-    public int getScreenWidth() {
-        return ScreenWidth;
+    public int getMX() {
+        return mouse.getX();
     }
 
-    public int getScreenHeight() {
-        return ScreenHeight;
+    public int getMY() {
+        return mouse.getY();
     }
 
     public int getButton() {

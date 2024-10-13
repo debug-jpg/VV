@@ -296,46 +296,6 @@ public class UI {
         quiz.getQuestion();
         quiz.render(g2);
 
-        // // WINDOW
-        // int x, y, width, height;
-        // x = gp.tileSize * 2;
-        // y = gp.tileSize / 2;
-        // width = gp.screenWidth - (gp.tileSize * 4);
-        // height = gp.tileSize * 4;
-        //
-        // drawSubWindow(x, y, width, height);
-        //
-        // g2.setFont(jp);
-        // x += gp.tileSize;
-        // y += gp.tileSize;
-        //
-        // for (String line : currentDialog.split("\n")) {
-        // g2.drawString(line, x, y);
-        // y += 40;
-        // }
-        //
-        // x = gp.tileSize * 2;
-        // y = (gp.tileSize * 11) / 2;
-        // width = gp.screenWidth - (gp.tileSize * 14);
-        // height = gp.tileSize * 2;
-        //
-        // drawSubWindow(x, y, width, height);
-        //
-        // x = gp.tileSize * 2;
-        // y = (gp.tileSize * 16) / 2;
-        //
-        // drawSubWindow(x, y, width, height);
-        //
-        // x = gp.tileSize * 12;
-        // y = (gp.tileSize * 11) / 2;
-        //
-        // drawSubWindow(x, y, width, height);
-        //
-        // x = gp.tileSize * 12;
-        // y = (gp.tileSize * 16) / 2;
-        //
-        // drawSubWindow(x, y, width, height);
-
     }
 
     public void drawOptionScreen() {
