@@ -111,6 +111,36 @@ public class KeyHandler implements KeyListener{
                     gp.playMusic(1);
                 }
             }
+            if (code == KeyEvent.VK_L && e.isControlDown() && e.isShiftDown()) {
+                cheatActive = !cheatActive;
+                gp.stopMusic();
+                if (cheatActive) {
+                    gp.playMusic(16);
+                }
+                else {
+                    gp.playMusic(1);
+                }
+            }
+            if (code == KeyEvent.VK_G && e.isControlDown() && e.isShiftDown()) {
+                cheatActive = !cheatActive;
+                gp.stopMusic();
+                if (cheatActive) {
+                    gp.playMusic(17);
+                }
+                else {
+                    gp.playMusic(1);
+                }
+            }
+            if  (code == KeyEvent.VK_C && e.isControlDown() && e.isShiftDown()) {
+                cheatActive = !cheatActive;
+                gp.stopMusic();
+                if (cheatActive) {
+                    gp.playMusic(18);
+                }
+                else {
+                    gp.playMusic(1);
+                }
+            }
         }
 
         else if (gp.gameState == gp.pauseState) {

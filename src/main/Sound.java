@@ -25,6 +25,10 @@ public class Sound {
         soundURL[4] = getClass().getResource("/sound/correct.wav");
         soundURL[5] = getClass().getResource("/sound/incorrect.wav");
         soundURL[15] = getClass().getResource("/sound/dramaturgy.wav");
+        soundURL[16] = getClass().getResource("/sound/literary_nonsense.wav");
+        soundURL[17] = getClass().getResource("/sound/gunjo_sanka.wav");
+        soundURL[18] = getClass().getResource("/sound/cup_noodle.wav");
+
     }
 
     public void setFile(int i) {
