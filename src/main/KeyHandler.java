@@ -103,12 +103,11 @@ public class KeyHandler implements KeyListener{
             }
             if (code == KeyEvent.VK_D && e.isControlDown() && e.isShiftDown()) {
                 cheatActive = !cheatActive;
+                gp.stopMusic();
                 if (cheatActive) {
-                    gp.stopMusic();
                     gp.playMusic(15);
                 }
                 else {
-                    gp.stopMusic();
                     gp.playMusic(1);
                 }
             }
