@@ -3,6 +3,9 @@ package main;
 import entity.Entity;
 import object.Heart;
 
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Line;
+import javax.sound.sampled.Mixer;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
@@ -122,6 +125,26 @@ public class UI {
 
             // LOGO IMAGE
             g2.drawImage(assets.logoImage, 0, 0, gp.tileSize * 2, gp.tileSize * 2, null);
+
+            Mixer.Info[] mixerInfo = AudioSystem.getMixerInfo();
+            if (mixerInfo.length == 0) {
+                g2.setFont(arial);
+                g2.setFont(g2.getFont().deriveFont(Font.BOLD, 13));
+                g2.setColor(Color.RED);
+                String text = "No sound card detected.";
+                int x = gp.tileSize;
+                int y = gp.tileSize * 12;
+                g2.drawString(text, x, y);
+            }
+            else {
+                g2.setFont(arial);
+                g2.setFont(g2.getFont().deriveFont(Font.BOLD, 13));
+                g2.setColor(Color.GREEN);
+                String text = "Sound card detected.";
+                int x = gp.tileSize;
+                int y = gp.tileSize * 12;
+                g2.drawString(text, x, y);
+            }
 
             g2.setFont(jpTitle);
             String text = "VISUAL VENTURE";
