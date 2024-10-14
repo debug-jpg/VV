@@ -7,6 +7,7 @@ import java.awt.event.*;
 public class KeyHandler implements KeyListener{
 
     public boolean up, down, left, right, enter;
+    public boolean cheatActive = false;
 
     GamePanel gp;
 
@@ -47,7 +48,7 @@ public class KeyHandler implements KeyListener{
                 if (code == KeyEvent.VK_ENTER) {
                     if (gp.ui.commandNum == 0) {
                         gp.gameState = gp.playState;
-//                        gp.playMusic(1);
+                        gp.playMusic(1);
                     }
                     if (gp.ui.commandNum == 1) {
                         gp.ui.titleScreenState = 1;
@@ -99,6 +100,17 @@ public class KeyHandler implements KeyListener{
             }
             if (code == KeyEvent.VK_ESCAPE) {
                 gp.gameState = gp.optionState;
+            }
+            if (code == KeyEvent.VK_D && e.isControlDown() && e.isShiftDown()) {
+                cheatActive = !cheatActive;
+                if (cheatActive) {
+                    gp.stopMusic();
+                    gp.playMusic(15);
+                }
+                else {
+                    gp.stopMusic();
+                    gp.playMusic(1);
+                }
             }
         }
 

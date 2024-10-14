@@ -18,11 +18,13 @@ public class Sound {
 
     public Sound() {
 
-        soundURL[0] = getClass().getResource("/sound/BlueBoyAdventure.wav");
-        soundURL[1] = getClass().getResource("/sound/coin.wav");
-        soundURL[2] = getClass().getResource("/sound/powerup.wav");
-        soundURL[3] = getClass().getResource("/sound/unlock.wav");
-        soundURL[4] = getClass().getResource("/sound/fanfare.wav");
+        soundURL[0] = getClass().getResource("/sound/bgm1.wav");
+        soundURL[1] = getClass().getResource("/sound/bgm2.wav");
+        soundURL[2] = getClass().getResource("/sound/bonus_hint.wav");
+        soundURL[3] = getClass().getResource("/sound/click.wav");
+        soundURL[4] = getClass().getResource("/sound/correct.wav");
+        soundURL[5] = getClass().getResource("/sound/incorrect.wav");
+        soundURL[15] = getClass().getResource("/sound/dramaturgy.wav");
     }
 
     public void setFile(int i) {
