@@ -5,6 +5,8 @@ import main.KeyHandler;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.List;
+import java.util.Random;
 
 @SuppressWarnings("all")
 public class Saki extends Entity {
@@ -79,8 +81,7 @@ public class Saki extends Entity {
                         gp.obj[i] = null;
                         hasKey--;
                         gp.ui.showMessage("Door Unlocked.");
-                    }
-                    else {
+                    } else {
                         gp.ui.showMessage("Key is required.");
                     }
                     break;
@@ -117,14 +118,11 @@ public class Saki extends Entity {
         if (key.up || key.down || key.left || key.right) {
             if (key.up) {
                 direction = "up";
-            }
-            else if (key.down) {
+            } else if (key.down) {
                 direction = "down";
-            }
-            else if (key.left) {
+            } else if (key.left) {
                 direction = "left";
-            }
-            else if (key.right) {
+            } else if (key.right) {
                 direction = "right";
             }
 
@@ -169,16 +167,13 @@ public class Saki extends Entity {
             if (spriteCounter > 12) {
                 if (spriteNum == 1) {
                     spriteNum = 2;
-                }
-                else if (spriteNum == 2) {
+                } else if (spriteNum == 2) {
                     spriteNum = 1;
                 }
                 spriteCounter = 0;
             }
 
-        }
-
-        else {
+        } else {
             standCounter++;
             if (standCounter == 20) {
                 spriteNum = 1;

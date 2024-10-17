@@ -2,12 +2,19 @@ package main;
 
 import entity.Entity;
 import object.Heart;
+import object.Key;
 
 import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Line;
 import javax.sound.sampled.Mixer;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 @SuppressWarnings("all")
 public class UI {
@@ -15,9 +22,8 @@ public class UI {
     GamePanel gp;
     Graphics2D g2;
     Font arial, end, jp, jpTitle;
-    BufferedImage heart_full, heart_half, heart_blank;
+    BufferedImage heart_full, heart_half, heart_blank, keyImage;
     AssetSetter assets;
-    QuizManager quiz;
     public boolean messageOn = false;
     public String message = "";
     int messageCounter = 0;
@@ -27,18 +33,26 @@ public class UI {
     public int titleScreenState = 0;
     public int subState = 0;
 
+    // QUIZ
+    public List<String> mondai;
+    public final Random random = new Random();
+    public String currectCorrectAnswer;
+    public int correctAnswerCount = 0;
+    public int score = 0;
+
     public UI(GamePanel gp) {
         this.gp = gp;
-        assets = new AssetSetter(gp);
-        quiz = new QuizManager(gp);
+        this.assets = new AssetSetter(gp);
+        this.mondai = new ArrayList<>();
 
         arial = new Font("Arial", Font.PLAIN, 40);
         end = new Font("Arial", Font.BOLD, 80);
         jp = new Font("Meiryo", Font.PLAIN, 20);
         jpTitle = new Font("Meiryo", Font.BOLD, 80);
 
-        // Key key = new Key(gp);
-        // keyImage = key.image;
+        Key key = new Key(gp);
+        keyImage = key.image;
+
 
         // CREATE HUD OBJECT
         Entity heart = new Heart(gp);
@@ -78,7 +92,7 @@ public class UI {
             drawPauseScreen();
         }
         if (gp.gameState == gp.dialogState) {
-            drawDialogScreen();
+            drawQuizState();
         }
         if (gp.gameState == gp.optionState) {
             drawOptionScreen();
@@ -135,8 +149,7 @@ public class UI {
                 int x = gp.tileSize;
                 int y = gp.tileSize * 12;
                 g2.drawString(text, x, y);
-            }
-            else {
+            } else {
                 g2.setFont(arial);
                 g2.setFont(g2.getFont().deriveFont(Font.BOLD, 13));
                 g2.setColor(Color.GREEN);
@@ -197,9 +210,7 @@ public class UI {
             if (commandNum == 3) {
                 g2.drawString(">", x - gp.tileSize, y);
             }
-        }
-
-        else if (titleScreenState == 1) {
+        } else if (titleScreenState == 1) {
             g2.drawImage(assets.backgroundImage, 0, 0, null);
 
             g2.setFont(arial);
@@ -257,9 +268,7 @@ public class UI {
             x = gp.tileSize;
             y = gp.tileSize;
             g2.drawString(text, x, y);
-        }
-
-        else if (titleScreenState == 2) {
+        } else if (titleScreenState == 2) {
             g2.drawImage(assets.backgroundImage, 0, 0, null);
 
             g2.setFont(arial);
@@ -314,10 +323,8 @@ public class UI {
 
     }
 
-    public void drawDialogScreen() {
-
-        quiz.getQuestion();
-        quiz.render(g2);
+    public void drawQuizState() {
+        nextQuestion();
 
     }
 
@@ -529,4 +536,25 @@ public class UI {
         return x;
     }
 
+    public int getXforCenteredImage() {
+        int x = gp.screenWidth / 2;
+        return x;
+    }
+
+    public void loadQuestion() {
+        try {
+            mondai = Files.readAllLines(Paths.get("quiz" + File.separator + "quiz.txt"));
+        } catch (IOException e) {
+            e.printStackTrace();
+            mondai = new ArrayList<>();
+        }
+    }
+
+    public void nextQuestion() {
+        if (mondai.size() > 0) {
+            String block = mondai.get(random.nextInt(mondai.size()));
+            String[] parts = block.split("///");
+            g2.drawString(parts[0], gp.tileSize, gp.tileSize * 2);
+        }
+    }
 }

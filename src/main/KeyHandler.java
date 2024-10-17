@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.event.*;
 
 @SuppressWarnings("all")
-public class KeyHandler implements KeyListener{
+public class KeyHandler implements KeyListener {
 
     public boolean up, down, left, right, enter;
     public boolean cheatActive = false;
@@ -16,13 +16,14 @@ public class KeyHandler implements KeyListener{
     }
 
     @Override
-    public void keyTyped(KeyEvent e) {}
+    public void keyTyped(KeyEvent e) {
+    }
 
     /**
-     *    Handles key press events in the game.
-     *    Different key press actions are performed based on the current game state.
+     * Handles key press events in the game.
+     * Different key press actions are performed based on the current game state.
      *
-     *    @param e the KeyEvent object containing information about the key press event
+     * @param e the KeyEvent object containing information about the key press event
      */
     @Override
     public void keyPressed(KeyEvent e) {
@@ -63,15 +64,11 @@ public class KeyHandler implements KeyListener{
                         }
                     }
                 }
-            }
-
-            else if (gp.ui.titleScreenState == 1) {
+            } else if (gp.ui.titleScreenState == 1) {
                 if (code == KeyEvent.VK_ESCAPE) {
                     gp.ui.titleScreenState = 0;
                 }
-            }
-
-            else if (gp.ui.titleScreenState == 2) {
+            } else if (gp.ui.titleScreenState == 2) {
                 if (code == KeyEvent.VK_ESCAPE) {
                     gp.ui.titleScreenState = 0;
                 }
@@ -106,8 +103,7 @@ public class KeyHandler implements KeyListener{
                 gp.stopMusic();
                 if (cheatActive) {
                     gp.playMusic(15);
-                }
-                else {
+                } else {
                     gp.playMusic(1);
                 }
             }
@@ -116,8 +112,7 @@ public class KeyHandler implements KeyListener{
                 gp.stopMusic();
                 if (cheatActive) {
                     gp.playMusic(16);
-                }
-                else {
+                } else {
                     gp.playMusic(1);
                 }
             }
@@ -126,49 +121,41 @@ public class KeyHandler implements KeyListener{
                 gp.stopMusic();
                 if (cheatActive) {
                     gp.playMusic(17);
-                }
-                else {
+                } else {
                     gp.playMusic(1);
                 }
             }
-            if  (code == KeyEvent.VK_C && e.isControlDown() && e.isShiftDown()) {
+            if (code == KeyEvent.VK_C && e.isControlDown() && e.isShiftDown()) {
                 cheatActive = !cheatActive;
                 gp.stopMusic();
                 if (cheatActive) {
                     gp.playMusic(18);
-                }
-                else {
+                } else {
                     gp.playMusic(1);
                 }
             }
-        }
-
-        else if (gp.gameState == gp.pauseState) {
+        } else if (gp.gameState == gp.pauseState) {
             if (code == KeyEvent.VK_P) {
                 gp.gameState = gp.playState;
             }
-        }
-
-        else if (gp.gameState == gp.dialogState) {
+        } else if (gp.gameState == gp.dialogState) {
             if (code == KeyEvent.VK_ENTER || code == KeyEvent.VK_SPACE) {
                 gp.gameState = gp.playState;
             }
-        }
-
-        else if (gp.gameState == gp.optionState) {
+        } else if (gp.gameState == gp.optionState) {
             optionState(code);
         }
 
     }
 
     /**
-     *    Handles the option state event.
+     * Handles the option state event.
+     * <p>
+     * This method is called when an option state event occurs. It updates the
+     * game state, handles enter key press, and navigates through options using
+     * up, down, left, and right keys.
      *
-     *    This method is called when an option state event occurs. It updates the
-     *    game state, handles enter key press, and navigates through options using
-     *    up, down, left, and right keys.
-     *
-     *    @param  code  the KeyEvent object containing information about the key that was pressed
+     * @param code the KeyEvent object containing information about the key that was pressed
      */
     public void optionState(int code) {
 
@@ -229,12 +216,12 @@ public class KeyHandler implements KeyListener{
     }
 
     /**
-     *    Handles the key release event.
+     * Handles the key release event.
+     * <p>
+     * This method is called when a key is released. It updates the state of the
+     * corresponding direction variables (up, down, left, right) to false.
      *
-     *    This method is called when a key is released. It updates the state of the
-     *    corresponding direction variables (up, down, left, right) to false.
-     *
-     *    @param  e  the KeyEvent object containing information about the key that was released
+     * @param e the KeyEvent object containing information about the key that was released
      */
     @Override
     public void keyReleased(KeyEvent e) {

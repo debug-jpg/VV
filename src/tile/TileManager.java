@@ -28,17 +28,17 @@ public class TileManager {
 
     public void getTileImage() {
 
-            setup(0, "grass", false);
-            setup(1, "wall", true);
-            setup(2, "water", true);
-            setup(3, "earth", false);
-            setup(4, "treewgrass", true);
-            setup(5, "fencee", true);
-            setup(6, "fencee2", true);
-            setup(7, "ground", false);
-            setup(8, "groundh", false);
-            setup(9, "lake1grass", true);
-            setup(10, "lake2grass", true);
+        setup(0, "grass", false);
+        setup(1, "wall", true);
+        setup(2, "water", true);
+        setup(3, "earth", false);
+        setup(4, "treewgrass", true);
+        setup(5, "fencee", true);
+        setup(6, "fencee2", true);
+        setup(7, "redmrwgrass", false);
+        setup(8, "bluemrwgrass", false);
+        setup(9, "lake1grass", true);
+        setup(10, "lake2grass", true);
 
     }
 
@@ -51,8 +51,7 @@ public class TileManager {
             tile[index].image = ImageIO.read(getClass().getResourceAsStream("/tiles/" + imageName + ".png"));
             tile[index].image = tool.scaledImage(tile[index].image, gp.tileSize, gp.tileSize);
             tile[index].collision = collision;
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -86,8 +85,7 @@ public class TileManager {
                 }
             }
             br.close();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

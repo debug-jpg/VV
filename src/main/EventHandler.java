@@ -5,7 +5,6 @@ public class EventHandler {
 
     GamePanel gp;
     AssetSetter setter;
-    QuizManager quizManager = new QuizManager(gp);
     EventRect eventRect[][];
 
     int previousEventX, previousEventY;
@@ -24,8 +23,8 @@ public class EventHandler {
             eventRect[col][row] = new EventRect();
             eventRect[col][row].x = 23;
             eventRect[col][row].y = 23;
-            eventRect[col][row].width = 2;
-            eventRect[col][row].height = 2;
+            eventRect[col][row].width = 32;
+            eventRect[col][row].height = 32;
             eventRect[col][row].eventRectDefaultX = eventRect[col][row].x;
             eventRect[col][row].eventRectDefaultY = eventRect[col][row].y;
 
@@ -49,11 +48,11 @@ public class EventHandler {
         }
 
         if (canTouchEvent) {
-            if (hit(17, 13, "up") == true) {
+            if (hit(17, 10, "up") == true) {
                 damagePit(24, 9, gp.dialogState);
             }
             if (hit(23, 7, "up") == true) {
-                healingPool(23, 7, gp.dialogState);
+                healingPool(23, 7, gp.playState);
             }
         }
 
@@ -88,7 +87,6 @@ public class EventHandler {
 
     public void damagePit(int col, int row, int gameState) {
         gp.gameState = gameState;
-        gp.ui.currentDialog = quizManager.Question;
         canTouchEvent = false;
 
     }
