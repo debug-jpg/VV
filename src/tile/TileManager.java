@@ -33,12 +33,10 @@ public class TileManager {
         setup(2, "water", true);
         setup(3, "earth", false);
         setup(4, "treewgrass", true);
-        setup(5, "fencee", true);
-        setup(6, "fencee2", true);
-        setup(7, "redmrwgrass", false);
-        setup(8, "bluemrwgrass", false);
-        setup(9, "lake1grass", true);
-        setup(10, "lake2grass", true);
+        setup(5, "redmrwgrass", true);
+        setup(6, "bluemrwgrass", true);
+        setup(7, "lake1grass", true);
+        setup(8, "lake2grass", true);
 
     }
 

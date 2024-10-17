@@ -75,12 +75,12 @@ public class Saki extends Entity {
                     gp.obj[i] = null;
                     gp.ui.showMessage("You got a key!");
                     break;
-                case "Door":
+                case "Fence":
                     if (hasKey > 0) {
                         gp.playSE(3);
                         gp.obj[i] = null;
                         hasKey--;
-                        gp.ui.showMessage("Door Unlocked.");
+                        gp.ui.showMessage("Fence Unlocked.");
                     } else {
                         gp.ui.showMessage("Key is required.");
                     }
