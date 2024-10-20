@@ -15,6 +15,7 @@ public class UI {
     Graphics2D g2;
     Font arial, end, jp, jpTitle;
     BufferedImage heart_full, heart_half, heart_blank, bgImage, logoImg, titleImg;
+    QuizManager quizManager;
     public boolean messageOn = false;
     public String message = "";
     int messageCounter = 0;
@@ -27,6 +28,7 @@ public class UI {
 
     public UI(GamePanel gp) {
         this.gp = gp;
+        this.quizManager = new QuizManager(gp);
 
         arial = new Font("Arial", Font.PLAIN, 40);
         end = new Font("Arial", Font.BOLD, 80);
@@ -302,30 +304,31 @@ public class UI {
 
     public void drawDialogScreen() {
 
-        // WINDOW
-        int x, y, width, height;
-        x = gp.tileSize * 2;
-        y = gp.tileSize / 2;
-        width = gp.screenWidth - (gp.tileSize * 4);
-        height = gp.tileSize * 4;
-
-        drawSubWindow(x, y, width, height);
-
-        g2.setFont(jp);
-        x += gp.tileSize;
-        y += gp.tileSize;
-
-        for (String line : currentDialog.split("\n")) {
-            g2.drawString(line, x, y);
-            y += 40;
-        }
-
-        x = gp.tileSize * 2;
-        y = (gp.tileSize * 6) / 2;
-        width = gp.screenWidth - (gp.tileSize * 6);
-        height = gp.tileSize * 3;
-
-        drawSubWindow(x, y, width, height);
+        quizManager.render(g2);
+//        // WINDOW
+//        int x, y, width, height;
+//        x = gp.tileSize * 2;
+//        y = gp.tileSize / 2;
+//        width = gp.screenWidth - (gp.tileSize * 4);
+//        height = gp.tileSize * 4;
+//
+//        drawSubWindow(x, y, width, height);
+//
+//        g2.setFont(jp);
+//        x += gp.tileSize;
+//        y += gp.tileSize;
+//
+//        for (String line : currentDialog.split("\n")) {
+//            g2.drawString(line, x, y);
+//            y += 40;
+//        }
+//
+//        x = gp.tileSize * 2;
+//        y = (gp.tileSize * 6) / 2;
+//        width = gp.screenWidth - (gp.tileSize * 6);
+//        height = gp.tileSize * 3;
+//
+//        drawSubWindow(x, y, width, height);
 
     }
 
