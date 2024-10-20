@@ -13,7 +13,6 @@ import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
 
-@SuppressWarnings("all")
 public class QuizManager {
 
 	GamePanel gp;
@@ -22,13 +21,13 @@ public class QuizManager {
 	public String A = "", B = "", C = "", D = "";
 	public String correctAnswer = "";
 
-	List<Question> questionList = new ArrayList<Question>();
+	List<Question> questionList = new ArrayList<>();
 
 	AssetSetter setter;
 	public boolean Correct, Wrong;
 
 	// CLICK
-	public boolean a, b, c, d, confirm;
+	public boolean a, b, c, d;
 
 	InputStream inputStream;
 
@@ -74,7 +73,7 @@ public class QuizManager {
 			}
 			random();
 		} catch (IOException e) {
-			e.printStackTrace();
+			System.out.println("Error: " + e.getMessage());
 		}
 	}
 
@@ -111,17 +110,10 @@ public class QuizManager {
 	public void checkAnswer() {
 		String userAnswer = getAnswer();
 		if (userAnswer != null) {
-			if (userAnswer.equals(correctAnswer)) {
-				Correct = true;
-				Wrong = false;
-				gp.playSE(2);
-			} else {
-				Correct = false;
-				Wrong = false;
-				gp.playSE(2);
-			}
-
-		}
+            Correct = userAnswer.equals(correctAnswer);
+            Wrong = false;
+            gp.playSE(2);
+        }
 	}
 
 	public void render(Graphics2D g2) {
@@ -129,29 +121,27 @@ public class QuizManager {
 
 		boolean inQA, inQB, inQC, inQD;
 
-		int Boxlenght = 300;
-		int Boxwidth = 120;
+		int BoxLength = 300;
+		int BoxWidth = 120;
 
 		// POPUP SCREEN
 		int TextBoxY = 225;
 
 		int TextBoxAX = 125;
-		int TextBoxAY = TextBoxY;
 
-		int TextBoxBX = 125;
+        int TextBoxBX = 125;
 		int TextBoxBY = TextBoxY + 150;
 
 		int TextBoxCX = 600;
-		int TextBoxCY = TextBoxY;
 
-		int TextBoxDX = 600;
+        int TextBoxDX = 600;
 		int TextBoxDY = TextBoxY + 150;
 
 		getQuestion();
 		if (Question != null) {
-			setter.textBox(TextBoxAX, TextBoxAY, 200, 100, g2);
+			setter.textBox(TextBoxAX, TextBoxY, 200, 100, g2);
 			setter.textBox(TextBoxBX, TextBoxBY, 200, 100, g2);
-			setter.textBox(TextBoxCX, TextBoxCY, 200, 100, g2);
+			setter.textBox(TextBoxCX, TextBoxY, 200, 100, g2);
 			setter.textBox(TextBoxDX, TextBoxDY, 200, 100, g2);
 
 			g2.setColor(Color.BLACK);
@@ -159,9 +149,9 @@ public class QuizManager {
 			int Qx = 320;
 			setter.printText(Question, Qx, Qy, 48, 55, false, g2);
 
-			setter.printText(A, TextBoxAX + 20, TextBoxAY + 65, 48, 30, false, g2);
+			setter.printText(A, TextBoxAX + 20, TextBoxY + 65, 48, 30, false, g2);
 			setter.printText(B, TextBoxBX + 20, TextBoxBY + 65, 48, 30, false, g2);
-			setter.printText(C, TextBoxCX + 20, TextBoxCY + 65, 48, 30, false, g2);
+			setter.printText(C, TextBoxCX + 20, TextBoxY + 65, 48, 30, false, g2);
 			setter.printText(D, TextBoxDX + 20, TextBoxDY + 65, 48, 30, false, g2);
 		} else {
 			System.err.println("Question is null");

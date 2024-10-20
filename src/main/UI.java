@@ -7,8 +7,8 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.Objects;
 
-@SuppressWarnings("all")
 public class UI {
 
     GamePanel gp;
@@ -40,16 +40,16 @@ public class UI {
 
         try {
 
-            BufferedImage backgroundImage = ImageIO.read(getClass().getResourceAsStream("/background/bg_main.png"));
-            BufferedImage logoImage = ImageIO.read(getClass().getResourceAsStream("/background/CamhiLogo.png"));
-            BufferedImage title = ImageIO.read(getClass().getResourceAsStream("/background/title.png"));
+            BufferedImage backgroundImage = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/background/bg_main.png")));
+            BufferedImage logoImage = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/background/CamhiLogo.png")));
+            BufferedImage title = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/background/title.png")));
             bgImage = backgroundImage;
             logoImg = logoImage;
             titleImg = title;
 
         }
         catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Error: " + e.getMessage());
         }
 
 
@@ -338,7 +338,7 @@ public class UI {
         g2.setFont(arial);
         g2.setFont(g2.getFont().deriveFont(32F));
 
-        // SUBWINDOW
+        // SUB WINDOW
         int frameX = gp.tileSize * 6;
         int frameY = gp.tileSize;
         int frameWidth = gp.tileSize * 8;
