@@ -497,7 +497,6 @@ public class UI {
                 subState = 0;
                 titleScreenState = 0;
                 gp.gameState = gp.titleState;
-                gp.stopMusic();
             }
         }
 
