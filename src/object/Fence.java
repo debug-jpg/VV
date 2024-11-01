@@ -8,7 +8,7 @@ public class Fence extends Entity {
     public Fence(GamePanel gp) {
         super(gp);
         name = "Fence";
-        down1 = setup("/tiles/fence");
+        down1 = setup("/tiles/fencee");
         collision = true;
     }
 
