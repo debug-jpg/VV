@@ -5,8 +5,6 @@ import main.KeyHandler;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.util.List;
-import java.util.Random;
 
 @SuppressWarnings("all")
 public class Saki extends Entity {
@@ -36,10 +34,10 @@ public class Saki extends Entity {
 
     public void setDefaultValues() {
 
-        worldX = gp.tileSize * 17;
-        worldY = gp.tileSize * 21;
+        worldX = gp.tileSize * 16;
+        worldY = gp.tileSize * 35;
         speed = 4;
-        direction = "down";
+        direction = "up";
 
         // PLAYER STATUS
         maxLife = 6;
@@ -70,14 +68,12 @@ public class Saki extends Entity {
 
             switch (objectName) {
                 case "Key":
-                    gp.playSE(1);
                     hasKey++;
                     gp.obj[i] = null;
                     gp.ui.showMessage("You got a key!");
                     break;
                 case "Fence":
                     if (hasKey > 0) {
-                        gp.playSE(3);
                         gp.obj[i] = null;
                         hasKey--;
                         gp.ui.showMessage("Fence Unlocked.");
@@ -86,15 +82,12 @@ public class Saki extends Entity {
                     }
                     break;
                 case "Boots":
-                    gp.playSE(2);
                     speed += 2;
                     gp.obj[i] = null;
                     gp.ui.showMessage("Speed Up!");
                     break;
                 case "Chest":
                     gp.ui.gameFinished = true;
-                    gp.stopMusic();
-                    gp.playSE(4);
                     break;
             }
 

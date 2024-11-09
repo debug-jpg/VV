@@ -7,7 +7,6 @@ import java.awt.event.*;
 public class KeyHandler implements KeyListener {
 
     public boolean up, down, left, right, enter;
-    public boolean cheatActive = false;
 
     GamePanel gp;
 
@@ -49,7 +48,6 @@ public class KeyHandler implements KeyListener {
                 if (code == KeyEvent.VK_ENTER) {
                     if (gp.ui.commandNum == 0) {
                         gp.gameState = gp.playState;
-                        gp.playMusic(1);
                     }
                     if (gp.ui.commandNum == 1) {
                         gp.ui.titleScreenState = 1;
@@ -58,7 +56,7 @@ public class KeyHandler implements KeyListener {
                         gp.ui.titleScreenState = 2;
                     }
                     if (gp.ui.commandNum == 3) {
-                        int confirm = JOptionPane.showConfirmDialog(null, "ゲームを終了します。", "確認", JOptionPane.YES_NO_OPTION);
+                        int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to quit?", "Visual Venture", JOptionPane.YES_NO_OPTION);
                         if (confirm == 0) {
                             System.exit(0);
                         }
@@ -97,42 +95,6 @@ public class KeyHandler implements KeyListener {
             }
             if (code == KeyEvent.VK_ESCAPE) {
                 gp.gameState = gp.optionState;
-            }
-            if (code == KeyEvent.VK_D && e.isControlDown() && e.isShiftDown()) {
-                cheatActive = !cheatActive;
-                gp.stopMusic();
-                if (cheatActive) {
-                    gp.playMusic(15);
-                } else {
-                    gp.playMusic(1);
-                }
-            }
-            if (code == KeyEvent.VK_L && e.isControlDown() && e.isShiftDown()) {
-                cheatActive = !cheatActive;
-                gp.stopMusic();
-                if (cheatActive) {
-                    gp.playMusic(16);
-                } else {
-                    gp.playMusic(1);
-                }
-            }
-            if (code == KeyEvent.VK_G && e.isControlDown() && e.isShiftDown()) {
-                cheatActive = !cheatActive;
-                gp.stopMusic();
-                if (cheatActive) {
-                    gp.playMusic(17);
-                } else {
-                    gp.playMusic(1);
-                }
-            }
-            if (code == KeyEvent.VK_C && e.isControlDown() && e.isShiftDown()) {
-                cheatActive = !cheatActive;
-                gp.stopMusic();
-                if (cheatActive) {
-                    gp.playMusic(18);
-                } else {
-                    gp.playMusic(1);
-                }
             }
         } else if (gp.gameState == gp.pauseState) {
             if (code == KeyEvent.VK_P) {

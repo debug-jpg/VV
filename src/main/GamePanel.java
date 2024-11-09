@@ -56,8 +56,8 @@ public class GamePanel extends JPanel implements Runnable {
 
     // ENTITIES and OBJECTS
     public Saki saki = new Saki(this, key);
-    public Entity obj[] = new Entity[10];
-    public Entity npc[] = new Entity[10];
+    public Entity obj[] = new Entity[100];
+    public Entity npc[] = new Entity[100];
     ArrayList<Entity> entityList = new ArrayList<>();
 
     // GAME STATE
