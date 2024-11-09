@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="Ventures.jar">
+    <output-path>$PROJECT_DIR$/..</output-path>
+    <root id="archive" name="VV.jar">
+      <element id="module-output" name="VV" />
+    </root>
+  </artifact>
+</component>
