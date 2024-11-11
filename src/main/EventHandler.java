@@ -48,8 +48,8 @@ public class EventHandler {
         }
 
         if (canTouchEvent) {
-            if (hit(17, 10, "up") == true) {
-                damagePit(24, 9, gp.dialogState);
+            if (hit(15, 25, "any") == true) {
+                damagePit(15, 25, gp.dialogState);
             }
             if (hit(23, 7, "up") == true) {
                 healingPool(23, 7, gp.playState);
@@ -88,7 +88,6 @@ public class EventHandler {
     public void damagePit(int col, int row, int gameState) {
         gp.gameState = gameState;
         canTouchEvent = false;
-
     }
 
     public void healingPool(int col, int row, int gameState) {

@@ -7,6 +7,7 @@ import object.Key;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Mixer;
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -33,17 +34,9 @@ public class UI {
     public int titleScreenState = 0;
     public int subState = 0;
 
-    // QUIZ
-    public List<String> mondai;
-    public final Random random = new Random();
-    public String currectCorrectAnswer;
-    public int correctAnswerCount = 0;
-    public int score = 0;
-
     public UI(GamePanel gp) {
         this.gp = gp;
         this.assets = new AssetSetter(gp);
-        this.mondai = new ArrayList<>();
 
         arial = new Font("Arial", Font.PLAIN, 40);
         end = new Font("Arial", Font.BOLD, 80);
@@ -323,11 +316,6 @@ public class UI {
 
     }
 
-    public void drawQuizState() {
-        nextQuestion();
-
-    }
-
     public void drawOptionScreen() {
 
         g2.setColor(Color.white);
@@ -356,6 +344,33 @@ public class UI {
 
         gp.key.enter = false;
 
+    }
+
+    public void drawQuizState() {
+        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        g2.setFont(new Font("Arial", Font.BOLD, 20));
+        g2.setColor(Color.BLACK);
+
+        if (gp.quiz.currentQuestionIndex < gp.quiz.questions.size()) {
+            Question question = gp.quiz.questions.get(gp.quiz.currentQuestionIndex);
+            g2.drawString("Question: " + question.questionText, 50, 100);
+
+            g2.setFont(new Font("Arial", Font.PLAIN, 18));
+            for (int i = 0; i < question.options.length; i++) {
+                g2.drawString(question.options[i], 70, 150 + i * 30);
+            }
+
+            if (gp.quiz.showAnswerFeedback) {
+                g2.setColor(Color.GREEN);
+                g2.drawString("Correct!", 200, 300);
+            } else if (gp.quiz.currentQuestionIndex > 0) {
+                g2.setColor(Color.RED);
+                g2.drawString("Incorrect", 200, 300);
+            }
+
+            g2.setColor(Color.BLACK);
+            g2.drawString("Score: " + gp.quiz.score, 10, 20);
+        }
     }
 
     public void topOption(int frameX, int frameY) {
@@ -533,27 +548,5 @@ public class UI {
         int x = gp.screenWidth / 2 - length / 2;
 
         return x;
-    }
-
-    public int getXforCenteredImage() {
-        int x = gp.screenWidth / 2;
-        return x;
-    }
-
-    public void loadQuestion() {
-        try {
-            mondai = Files.readAllLines(Paths.get("quiz" + File.separator + "quiz.txt"));
-        } catch (IOException e) {
-            e.printStackTrace();
-            mondai = new ArrayList<>();
-        }
-    }
-
-    public void nextQuestion() {
-        if (mondai.size() > 0) {
-            String block = mondai.get(random.nextInt(mondai.size()));
-            String[] parts = block.split("///");
-            g2.drawString(parts[0], gp.tileSize, gp.tileSize * 2);
-        }
     }
 }

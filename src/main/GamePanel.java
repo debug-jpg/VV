@@ -1,6 +1,7 @@
 package main;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -47,6 +48,7 @@ public class GamePanel extends JPanel implements Runnable {
     public KeyHandler key = new KeyHandler(this);
     Sound music = new Sound();
     Sound effects = new Sound();
+    public QuizManager quiz = new QuizManager(this);
     public CollisionChecker hitbox = new CollisionChecker(this);
     public AssetSetter assetSetter = new AssetSetter(this);
     public UI ui = new UI(this);
@@ -73,6 +75,7 @@ public class GamePanel extends JPanel implements Runnable {
         this.setDoubleBuffered(true);
         this.addKeyListener(key);
         this.setFocusable(true);
+        this.requestFocusInWindow();
     }
 
     public void setupGame() {

@@ -3,6 +3,7 @@ package main;
 import javax.imageio.ImageIO;
 
 //import entity.NPC_OldMan;
+import entity.NPC_OldMan;
 import object.*;
 
 import java.awt.image.BufferedImage;
@@ -137,9 +138,9 @@ public class AssetSetter {
 
     public void setNPC() {
 
-//        gp.npc[0] = new NPC_OldMan(gp);
-//        gp.npc[0].worldX = gp.tileSize * 17;
-//        gp.npc[0].worldY = gp.tileSize * 25;
+        gp.npc[0] = new NPC_OldMan(gp);
+        gp.npc[0].worldX = gp.tileSize * 17;
+        gp.npc[0].worldY = gp.tileSize * 26;
 
     }
 
