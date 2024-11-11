@@ -104,7 +104,7 @@ public class KeyHandler implements KeyListener {
             if (code == KeyEvent.VK_ENTER || code == KeyEvent.VK_SPACE) {
                 gp.gameState = gp.playState;
             }
-
+            handleKeyPress(code);
         } else if (gp.gameState == gp.optionState) {
             optionState(code);
         }
