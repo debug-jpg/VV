@@ -1,6 +1,8 @@
 package main;
 
+import javax.swing.*;
 import java.awt.event.KeyEvent;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,17 +27,36 @@ public class QuizManager {
 
     public QuizManager(GamePanel gp) {
         this.gp = gp;
-        questions = loadQuestions();
+        questions = loadQuestions("/quiz/quiz.txt");
         currentQuestionIndex = 0;
         score = 0;
         showAnswerFeedback = false;
     }
 
-    public List<Question> loadQuestions() {
+    public List<Question> loadQuestions(String filepath) {
         List<Question> questions = new ArrayList<>();
-        questions.add(new Question("What is the capital of France?", new String[]{"1) Paris", "2) London", "3) Berlin", "4) Madrid"}, 0));
-        questions.add(new Question("What is 2 + 2?", new String[]{"1) 3", "2) 4", "3) 5", "4) 6"}, 1));
-        questions.add(new Question("What color is the sky?", new String[]{"1) Blue", "2) Green", "3) Red", "4) Yellow"}, 0));
+        try {
+            InputStream stream = getClass().getResourceAsStream(filepath);
+            assert stream != null;
+            BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
+
+            String line;
+            while ((line = reader.readLine()) != null ) {
+                String questionText = line;
+                String[] options = new String[4];
+                for (int i = 0; i < 4; i++) {
+                    options[i] = reader.readLine();
+                }
+                int correctOption = Integer.parseInt(reader.readLine());
+                questions.add(new Question(questionText, options, correctOption));
+
+                reader.readLine();
+            }
+        }
+        catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Error Reading this file: " + e.getMessage() + " Exiting...", "Error!!", JOptionPane.ERROR_MESSAGE);
+            System.exit(0);
+        }
         return questions;
     }
 
