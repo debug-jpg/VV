@@ -34,105 +34,49 @@ public class AssetSetter {
     }
 
     public void setObject() {
-        gp.obj[0] = new Key(gp);
-        gp.obj[0].worldX = gp.tileSize * 15;
-        gp.obj[0].worldY = gp.tileSize * 35;
+        ObjectData[] objects = {
+            new ObjectData("Key", 15, 35),
+            new ObjectData("Fence", 16, 29),
+            new ObjectData("Fence", 16, 33),
+            new ObjectData("Key", 17, 35),
+            new ObjectData("Fence2", 19, 27),
+            new ObjectData("Fence2", 23, 27),
+            new ObjectData("Fence", 24, 23),
+            new ObjectData("Fence", 25, 19),
+            new ObjectData("Fence2", 21, 18),
+            new ObjectData("Fence", 19, 20),
+            new ObjectData("Key", 17, 26),
+            new ObjectData("Key", 21, 27),
+            new ObjectData("Key", 22, 25),
+            new ObjectData("Key", 25, 24),
+            new ObjectData("Key", 23, 17),
+            new ObjectData("Key", 1, 1),
+            new ObjectData("Fence2", 16, 22),
+            new ObjectData("Fence2", 12, 22),
+            new ObjectData("Fence", 9, 25),
+            new ObjectData("Key", 18, 19),
+            new ObjectData("Key", 15, 21),
+            new ObjectData("Key", 1, 1),
+            new ObjectData("Key", 1, 1),
+            new ObjectData("Key", 1, 1),
+            new ObjectData("Key", 1, 1)
+        };
 
-        gp.obj[1] = new Fence(gp);
-        gp.obj[1].worldX = gp.tileSize * 16;
-        gp.obj[1].worldY = gp.tileSize * 29;
-
-        gp.obj[2] = new Fence(gp);
-        gp.obj[2].worldX = gp.tileSize * 16;
-        gp.obj[2].worldY = gp.tileSize * 33;
-
-        gp.obj[3] = new Key(gp);
-        gp.obj[3].worldX = gp.tileSize * 17;
-        gp.obj[3].worldY = gp.tileSize * 35;
-
-        gp.obj[4] = new Fence2(gp);
-        gp.obj[4].worldX = gp.tileSize * 19;
-        gp.obj[4].worldY = gp.tileSize * 27;
-
-        gp.obj[5] = new Fence2(gp);
-        gp.obj[5].worldX = gp.tileSize * 23;
-        gp.obj[5].worldY = gp.tileSize * 27;
-
-        gp.obj[6] = new Fence(gp);
-        gp.obj[6].worldX = gp.tileSize * 24;
-        gp.obj[6].worldY = gp.tileSize * 23;
-
-        gp.obj[7] = new Fence(gp);
-        gp.obj[7].worldX = gp.tileSize * 25;
-        gp.obj[7].worldY = gp.tileSize * 19;
-
-        gp.obj[8] = new Fence2(gp);
-        gp.obj[8].worldX = gp.tileSize * 21;
-        gp.obj[8].worldY = gp.tileSize * 18;
-
-        gp.obj[9] = new Fence(gp);
-        gp.obj[9].worldX = gp.tileSize * 19;
-        gp.obj[9].worldY = gp.tileSize * 20;
-
-        gp.obj[10] = new Key(gp);
-        gp.obj[10].worldX = gp.tileSize * 17;
-        gp.obj[10].worldY = gp.tileSize * 26;
-
-        gp.obj[11] = new Key(gp);
-        gp.obj[11].worldX = gp.tileSize * 21;
-        gp.obj[11].worldY = gp.tileSize * 27;
-
-        gp.obj[12] = new Key(gp);
-        gp.obj[12].worldX = gp.tileSize * 22;
-        gp.obj[12].worldY = gp.tileSize * 25;
-
-        gp.obj[13] = new Key(gp);
-        gp.obj[13].worldX = gp.tileSize * 25;
-        gp.obj[13].worldY = gp.tileSize * 24;
-
-        gp.obj[14] = new Key(gp);
-        gp.obj[14].worldX = gp.tileSize * 23;
-        gp.obj[14].worldY = gp.tileSize * 17;
-
-        gp.obj[15] = new Key(gp);
-        gp.obj[15].worldX = gp.tileSize;
-        gp.obj[15].worldX = gp.tileSize;
-
-        gp.obj[16] = new Fence2(gp);
-        gp.obj[16].worldX = gp.tileSize * 16;
-        gp.obj[16].worldX = gp.tileSize * 22;
-
-        gp.obj[17] = new Fence2(gp);
-        gp.obj[17].worldX = gp.tileSize * 12;
-        gp.obj[17].worldY = gp.tileSize * 22;
-
-        gp.obj[18] = new Fence(gp);
-        gp.obj[18].worldX = gp.tileSize * 9;
-        gp.obj[18].worldY = gp.tileSize * 25;
-
-        gp.obj[19] = new Key(gp);
-        gp.obj[19].worldX = gp.tileSize * 18;
-        gp.obj[19].worldY = gp.tileSize * 19;
-
-        gp.obj[20] = new Key(gp);
-        gp.obj[20].worldX = gp.tileSize * 15;
-        gp.obj[20].worldY = gp.tileSize * 21;
-
-        gp.obj[21] = new Key(gp);
-        gp.obj[21].worldX = gp.tileSize;
-        gp.obj[21].worldY = gp.tileSize;
-
-        gp.obj[22] = new Key(gp);
-        gp.obj[22].worldX = gp.tileSize;
-        gp.obj[22].worldY = gp.tileSize;
-
-        gp.obj[23] = new Key(gp);
-        gp.obj[23].worldX = gp.tileSize;
-        gp.obj[23].worldY = gp.tileSize;
-
-        gp.obj[24] = new Key(gp);
-        gp.obj[24].worldX = gp.tileSize;
-        gp.obj[24].worldY = gp.tileSize;
+        for (int i = 0; i < objects.length; i++) {
+            switch (objects[i].type) {
+                case "Key":
+                    gp.obj[i] = new Key(gp);
+                    break;
+                case "Fence":
+                    gp.obj[i] = new Fence(gp);
+                    break;
+                case "Fence2":
+                    gp.obj[i] = new Fence2(gp);
+                    break;
+            }
+            gp.obj[i].worldX = gp.tileSize * objects[i].worldX;
+            gp.obj[i].worldY = gp.tileSize * objects[i].worldY;
+        }
 
     }
 
@@ -143,6 +87,15 @@ public class AssetSetter {
         gp.npc[0].worldY = gp.tileSize * 26;
 
     }
+}
 
+class ObjectData {
+    String type;
+    int worldX, worldY;
 
+    ObjectData(String type, int worldX, int worldY) {
+        this.type = type;
+        this.worldX = worldX;
+        this.worldY = worldY;
+    }
 }

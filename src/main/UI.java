@@ -6,6 +6,7 @@ import object.Key;
 
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Mixer;
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
@@ -62,247 +63,169 @@ public class UI {
     }
 
     public void draw(Graphics2D g2) {
-
         this.g2 = g2;
 
         g2.setFont(arial);
-        g2.setColor(Color.white);
+        g2.setColor(Color.WHITE);
 
-        if (gp.gameState == gp.titleState) {
-            drawTitleScreen();
+        if (gp.gameState == gp.titleState) { drawTitleScreen(); }
+        else if (gp.gameState == gp.playState) { drawPlayState(); }
+        else if (gp.gameState == gp.pauseState) { drawPauseScreen(); }
+        else if (gp.gameState == gp.dialogState) { drawQuizState(); }
+        else if (gp.gameState == gp.optionState) { drawOptionScreen(); }
+        else {
+            JOptionPane.showMessageDialog(null, "Unexpected game state: " + gp.gameState);
         }
-        if (gp.gameState == gp.playState) {
+    }
 
-            g2.setFont(arial);
-            g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 20));
-            String score = "SCORE: ";
-            int x = gp.tileSize * 2;
-            int y = gp.tileSize;
-            g2.drawString(score, x, y);
-
-        }
-        if (gp.gameState == gp.pauseState) {
-            drawPauseScreen();
-        }
-        if (gp.gameState == gp.dialogState) {
-            drawQuizState();
-        }
-        if (gp.gameState == gp.optionState) {
-            drawOptionScreen();
-        }
+    public void drawPlayState() {
+        g2.setFont(arial);
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 20));
+        String score = "SCORE: ";
+        int x = gp.tileSize * 2;
+        int y = gp.tileSize;
+        g2.drawString(score, x, y);
     }
 
     public void drawPlayerLife() {
 
         int x = gp.tileSize / 2;
         int y = gp.tileSize / 2;
-        int i = 0;
 
-        // MAX LIFE
-        while (i < gp.saki.maxLife / 2) {
+        for (int i = 0; i < gp.saki.maxLife / 2; i++) {
             g2.drawImage(heart_blank, x, y, null);
-            i++;
             x += gp.tileSize;
         }
 
-        // RESET
         x = gp.tileSize / 2;
-        y = gp.tileSize / 2;
-        i = 0;
 
-        // CURRENT LIFE
-        while (i < gp.saki.life) {
-            g2.drawImage(heart_half, x, y, null);
-            i++;
-            if (i < gp.saki.life) {
-                g2.drawImage(heart_full, x, y, null);
+        for (int i = 0; i < gp.saki.life; i++) {
+            if (i % 2 == 0) {
+                g2.drawImage(heart_half, x, y, null);
             }
-            i++;
+            else {
+                g2.drawImage(heart_full, x, y, null);
+                x += gp.tileSize;
+            }
+        }
+
+        if (gp.saki.life % 2 != 0) {
             x += gp.tileSize;
         }
 
     }
 
     public void drawTitleScreen() {
+        g2.setFont(arial);
+        g2.setColor(Color.white);
 
-        if (titleScreenState == 0) {
+        g2.drawImage(assets.backgroundImage, 0, 0, null);
 
-            // BG IMAGE
-            g2.drawImage(assets.backgroundImage, 0, 0, null);
+        switch (titleScreenState) {
+            case 0 -> MainMenu(g2);
+            case 1 -> MenuToPlay(g2);
+            case 2 -> MenuAbout(g2);
+        }
+    }
 
-            // LOGO IMAGE
-            g2.drawImage(assets.logoImage, 0, 0, gp.tileSize * 2, gp.tileSize * 2, null);
+    public void MainMenu(Graphics2D g2) {
+        g2.drawImage(assets.logoImage, 0, 0, gp.tileSize * 2, gp.tileSize * 2, null);
 
-            Mixer.Info[] mixerInfo = AudioSystem.getMixerInfo();
-            if (mixerInfo.length == 0) {
-                g2.setFont(arial);
-                g2.setFont(g2.getFont().deriveFont(Font.BOLD, 13));
-                g2.setColor(Color.RED);
-                String text = "No sound card detected.";
-                int x = gp.tileSize;
-                int y = gp.tileSize * 12;
-                g2.drawString(text, x, y);
-            } else {
-                g2.setFont(arial);
-                g2.setFont(g2.getFont().deriveFont(Font.BOLD, 13));
-                g2.setColor(Color.GREEN);
-                String text = "Sound card detected.";
-                int x = gp.tileSize;
-                int y = gp.tileSize * 12;
-                g2.drawString(text, x, y);
+        Mixer.Info[] mixerInfo = AudioSystem.getMixerInfo();
+        String soundStatus = mixerInfo.length == 0 ? "No sound card detected." : "Sound card detected.";
+        Color soundColor = mixerInfo.length == 0 ? Color.red : Color.green;
+
+        g2.setFont(arial.deriveFont(Font.BOLD, 13));
+        g2.setColor(soundColor);
+        g2.drawString(soundStatus, gp.tileSize, gp.tileSize * 12);
+
+        String title = "VISUAL VENTURE";
+        int x = getXforCenteredText(title);
+        int y = gp.tileSize * 3;
+
+        g2.setColor(Color.GRAY);
+        g2.drawString(title, x + 5, y + 5);
+        g2.setColor(Color.WHITE);
+        g2.drawString(title, x, y);
+
+        String [] menuItems = {"Play", "Help", "About", "Exit"};
+        y += gp.tileSize * 4;
+        MenuOptions(g2, menuItems, y);
+    }
+
+    public void MenuOptions(Graphics2D g2, String[] options, int startY) {
+        for (int i = 0; i < options.length; i++) {
+            int x = getXforCenteredText(options[i]);
+            g2.drawString(options[i], x, startY);
+
+            if (commandNum == i) {
+                g2.drawString(">", x - gp.tileSize, startY);
             }
 
-            g2.setFont(jpTitle);
-            String text = "VISUAL VENTURE";
-            int x = getXforCenteredText(text);
-            int y = gp.tileSize * 3;
+            startY += gp.tileSize;
+        }
+    }
 
-            // SHADOW COLOR
-            g2.setColor(Color.gray);
-            g2.drawString(text, x + 5, y + 5);
+    public void MenuToPlay(Graphics2D g2) {
+        g2.setFont(arial.deriveFont(Font.PLAIN, 60));
+        g2.setColor(Color.BLACK);
 
-            // MAIN COLOR
-            g2.setColor(Color.white);
-            g2.drawString(text, x, y);
+        String title = "HOW TO PLAY";
+        int x = getXforCenteredText(title);
+        int y = gp.tileSize * 2;
+        g2.drawString(title, x, y);
 
-            // MENU
-            g2.setFont(arial);
+        g2.setFont(arial.deriveFont(Font.PLAIN, 32));
+        String[] instructions = {
+                "1. Start your journey: Begin with 10 points and embark on",
+                "your adventure.",
+                "2. Unlock obstacles: Answer questions to unlock obstacles",
+                "and continue your journey.",
+                "3. Earn points: Correct answers will earn you 10 points, while",
+                "incorrect answers will deduct 3 points.",
+                "4. Reach your destination: Accumulate 50 points to reach",
+                "a beautiful destination and complete your journey."
+        };
 
-            text = "PLAY";
-            x = getXforCenteredText(text);
-            y += gp.tileSize * 4;
-            g2.drawString(text, x, y);
+        x = gp.tileSize * 2;
+        y += gp.tileSize * 2;
 
-            if (commandNum == 0) {
-                g2.drawString(">", x - gp.tileSize, y);
-            }
-
-            text = "HELP";
-            x = getXforCenteredText(text);
+        for (String line : instructions) {
+            g2.drawString(line, x, y);
             y += gp.tileSize;
-            g2.drawString(text, x, y);
-
-            if (commandNum == 1) {
-                g2.drawString(">", x - gp.tileSize, y);
-            }
-
-            text = "ABOUT";
-            x = getXforCenteredText(text);
-            y += gp.tileSize;
-            g2.drawString(text, x, y);
-
-            if (commandNum == 2) {
-                g2.drawString(">", x - gp.tileSize, y);
-            }
-
-            text = "EXIT";
-            x = getXforCenteredText(text);
-            y += gp.tileSize;
-            g2.drawString(text, x, y);
-
-            if (commandNum == 3) {
-                g2.drawString(">", x - gp.tileSize, y);
-            }
-        } else if (titleScreenState == 1) {
-            g2.drawImage(assets.backgroundImage, 0, 0, null);
-
-            g2.setFont(arial);
-            g2.setColor(Color.BLACK);
-            g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 60));
-
-            String title = "HOW TO PLAY";
-            int x = getXforCenteredText(title);
-            int y = gp.tileSize * 2;
-            g2.drawString(title, x, y);
-
-            g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 32));
-            String text = "1. Start your journey: Begin with 10 points and embark";
-            x = gp.tileSize * 2;
-            y += gp.tileSize * 2;
-            g2.drawString(text, x, y);
-
-            text = "on your adventure through the Philippines.";
-            x = gp.tileSize * 2;
-            y += gp.tileSize;
-            g2.drawString(text, x, y);
-
-            text = "2. Unlock obstacles: Answer questions to unlock";
-            x = gp.tileSize * 2;
-            y += gp.tileSize;
-            g2.drawString(text, x, y);
-
-            text = "obstacles and continue your journey.";
-            x = gp.tileSize * 2;
-            y += gp.tileSize;
-            g2.drawString(text, x, y);
-
-            text = "3. Earn points: Correct answers will earn you 10 points,";
-            x = gp.tileSize * 2;
-            y += gp.tileSize;
-            g2.drawString(text, x, y);
-
-            text = "while incorrect answers will deduct 3 points.";
-            x = gp.tileSize * 2;
-            y += gp.tileSize;
-            g2.drawString(text, x, y);
-
-            text = "4. Reach your destination: Accumulate 50 points to reach";
-            x = gp.tileSize * 2;
-            y += gp.tileSize;
-            g2.drawString(text, x, y);
-
-            text = "beautiful destination and complete your journey.";
-            x = gp.tileSize * 2;
-            y += gp.tileSize;
-            g2.drawString(text, x, y);
-
-            g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 20));
-            text = "Press ESC to back";
-            x = gp.tileSize;
-            y = gp.tileSize;
-            g2.drawString(text, x, y);
-        } else if (titleScreenState == 2) {
-            g2.drawImage(assets.backgroundImage, 0, 0, null);
-
-            g2.setFont(arial);
-            g2.setColor(Color.BLACK);
-            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 60));
-
-            String title = "ABOUT GAME";
-            int x = getXforCenteredText(title);
-            int y = gp.tileSize * 2;
-            g2.drawString(title, x, y);
-
-            g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 40));
-            String text = "Explore the Philippines in \"Visual Venture\"!";
-            x = gp.tileSize * 2;
-            y += gp.tileSize * 2;
-            g2.drawString(text, x, y);
-
-            text = "Answer questions, unlock obstacles and";
-            y += gp.tileSize;
-            g2.drawString(text, x, y);
-
-            text = "learn about the country's amazing landmarks";
-            y += gp.tileSize;
-            g2.drawString(text, x, y);
-
-            text = "and culture. Reach 50 points to complete";
-            y += gp.tileSize;
-            g2.drawString(text, x, y);
-
-            text = "your journey!";
-            y += gp.tileSize;
-            g2.drawString(text, x, y);
-
-            g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 20));
-            text = "Press ESC to back";
-            x = gp.tileSize;
-            y = gp.tileSize;
-            g2.drawString(text, x, y);
-
         }
 
+        g2.setFont(arial.deriveFont(Font.PLAIN, 20));
+        g2.drawString("Press ESC to back", gp.tileSize, gp.tileSize);
+    }
+
+    public void MenuAbout(Graphics2D g2) {
+        g2.setFont(arial.deriveFont(Font.BOLD, 60));
+        g2.setColor(Color.BLACK);
+
+        String title = "ABOUT GAME";
+        int x = getXforCenteredText(title);
+        int y = gp.tileSize * 2;
+        g2.drawString(title, x, y);
+
+        g2.setFont(arial.deriveFont(Font.PLAIN, 40));
+        String[] aboutText = {
+                "Explore the Philippines in \"Visual Venture\"!",
+                "Answer questions, unlock obstacles, and learn",
+                "about the country's amazing landmarks",
+                "and culture.",
+                "Reach 50 points to complete your journey!"
+        };
+
+        x = gp.tileSize * 2;
+        y += gp.tileSize * 2;
+        for (String line : aboutText) {
+            g2.drawString(line, x, y);
+            y += gp.tileSize;
+        }
+
+        g2.setFont(arial.deriveFont(Font.PLAIN, 20));
+        g2.drawString("Press ESC to back", gp.tileSize, gp.tileSize);
     }
 
     public void drawPauseScreen() {
@@ -384,63 +307,44 @@ public class UI {
         textY = frameY + gp.tileSize;
         g2.drawString(text, textX, textY);
 
-        // MUSIC
+        String[] options = {"Music", "SE", "Control", "Quit", "Resume"};
+
+        int spacing = gp.tileSize;
         textX = frameX + gp.tileSize;
-        textY += gp.tileSize * 2;
-        g2.drawString("Music", textX, textY);
-        if (commandNum == 0) {
-            g2.drawString(">", textX - 25, textY);
-        }
+        textY += spacing;
 
-        // SOUND EFFECT
-        textY += gp.tileSize;
-        g2.drawString("SE", textX, textY);
-        if (commandNum == 1) {
-            g2.drawString(">", textX - 25, textY);
-        }
+        for (int i = 0; i < options.length; i++) {
+            g2.drawString(options[i], textX, textY);
 
-        // CONTROL
-        textY += gp.tileSize;
-        g2.drawString("CONTROL", textX, textY);
-        if (commandNum == 2) {
-            g2.drawString(">", textX - 25, textY);
-            if (gp.key.enter) {
-                subState = 1;
-                commandNum = 0;
+            if (commandNum == i) {
+                g2.drawString(">", textX - 25, textY);
+
+                if (gp.key.enter) {
+                    if (i == 2) { // CONTROL
+                        subState = 1;
+                        commandNum = 0;
+                    } else if (i == 3) { // QUIT
+                        subState = 2;
+                        commandNum = 0;
+                    } else if (i == 4) { // BACK
+                        gp.gameState = gp.playState; // Go back to playState
+                    }
+                }
             }
+            textY += spacing;
         }
 
-        // END GAME
-        textY += gp.tileSize;
-        g2.drawString("QUIT", textX, textY);
-        if (commandNum == 3) {
-            g2.drawString(">", textX - 25, textY);
-            if (gp.key.enter) {
-                subState = 2;
-                commandNum = 0;
-            }
-        }
+        int volumeBarX = frameX + (int) (gp.tileSize * 4.5);
+        int musicBarY = frameY + gp.tileSize * 2 + 24;
+        int seBarY = frameY + gp.tileSize * 3 + 24;
 
-        // BACK
-        textY += gp.tileSize * 2;
-        g2.drawString("Back", textX, textY);
-        if (commandNum == 4) {
-            g2.drawString(">", textX - 25, textY);
-        }
+        VolumeBar(frameX + (int) (gp.tileSize * 4.5), frameY + gp.tileSize * 2 + 24, gp.music.volumeScale);
+        VolumeBar(frameX + (int) (gp.tileSize * 4.5), frameY + gp.tileSize * 3 + 24, gp.effects.volumeScale);
+    }
 
-        // MUSIC RECT
-        textX = frameX + (int) (gp.tileSize * 4.5);
-        textY = frameY + gp.tileSize * 2 + 24;
-        g2.drawRect(textX, textY, 120, 24);
-        int volumeWidth = 24 * gp.music.volumeScale;
-        g2.fillRect(textX, textY, volumeWidth, 24);
-
-        // SOUND EFFECT RECT
-        textY += gp.tileSize;
-        g2.drawRect(textX, textY, 120, 24);
-        volumeWidth = 24 * gp.effects.volumeScale;
-        g2.fillRect(textX, textY, volumeWidth, 24);
-
+    public void VolumeBar(int x, int y, int volumeScale) {
+        g2.drawRect(x, y, 120, 24);
+        g2.fillRect(x, y, 24 * volumeScale, 24);
     }
 
     public void controls(int frameX, int frameY) {
