@@ -44,7 +44,6 @@ public class GamePanel extends JPanel implements Runnable {
     int FPS = 60;
 
     // Initiate
-
     public KeyHandler key = new KeyHandler(this);
     Sound music = new Sound();
     Sound effects = new Sound();
@@ -107,25 +106,21 @@ public class GamePanel extends JPanel implements Runnable {
 
     @Override
     public void run() {
-
-        double drawInterval = 1000000000 / FPS;
-        double delta = 0;
+        final double drawInterval = 1_000_000_000.0 / FPS;
         long lastTime = System.nanoTime();
-        long currentTime;
+        double delta = 0;
 
         while (gameThread != null) {
-
-            currentTime = System.nanoTime();
+            long currentTime = System.nanoTime();
             delta += (currentTime - lastTime) / drawInterval;
             lastTime = currentTime;
 
-            if (delta >= 1) {
+            while (delta >= 1) {
                 update();
                 drawTempScreen();
                 drawScreen();
                 delta--;
             }
-
         }
     }
 

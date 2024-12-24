@@ -4,6 +4,7 @@ import main.GamePanel;
 import main.UtilityTool;
 
 import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.awt.*;
 import java.awt.image.*;
 import java.io.IOException;
@@ -43,6 +44,8 @@ public class Entity {
     // CHARACTER STATS
     public int maxLife;
     public int life;
+
+    private final UtilityTool tool = new UtilityTool();
 
 
     public Entity(GamePanel gp) {
@@ -88,42 +91,34 @@ public class Entity {
      * @return  None
      */
     public void update() {
-
         setAction();
         collisionOn = false;
         gp.hitbox.checkTile(this);
         gp.hitbox.checkObject(this, false);
         gp.hitbox.checkPlayer(this);
 
-        // NULL
         if (!collisionOn) {
-            switch (direction) {
-                case "up":
-                    worldY -= speed;
-                    break;
-                case "down":
-                    worldY += speed;
-                    break;
-                case "left":
-                    worldX -= speed;
-                    break;
-                case "right":
-                    worldX += speed;
-                    break;
-            }
+            move();
         }
 
+        updateSprite();
+    }
+
+    private void move() {
+        switch (direction) {
+            case "up" -> worldY -= speed;
+            case "down" -> worldY += speed;
+            case "left" -> worldX -= speed;
+            case "right" -> worldX += speed;
+        }
+    }
+
+    private void updateSprite() {
         spriteCounter++;
         if (spriteCounter > 12) {
-            if (spriteNum == 1) {
-                spriteNum = 2;
-            }
-            else if (spriteNum == 2) {
-                spriteNum = 1;
-            }
+            spriteNum = (spriteNum == 1) ? 2 : 1;
             spriteCounter = 0;
         }
-
     }
 
     /**
@@ -208,19 +203,18 @@ public class Entity {
      * @return         	the scaled BufferedImage
      */
     public BufferedImage setup(String imagePath) {
-
-        UtilityTool tool = new UtilityTool();
         BufferedImage image = null;
-
         try {
-
             image = ImageIO.read(getClass().getResourceAsStream(imagePath + ".png"));
-            image = tool.scaledImage(image, gp.tileSize, gp.tileSize);
-
+            if (image != null) {
+                image = tool.scaledImage(image, gp.tileSize, gp.tileSize);
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "Image not found: " + imagePath + ".png", "Visual Venture", JOptionPane.ERROR_MESSAGE);
+            }
         }
-
         catch (IOException e) {
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error reading image: " + imagePath + ".png", "Visual Venture", JOptionPane.ERROR_MESSAGE);
         }
         return image;
     }

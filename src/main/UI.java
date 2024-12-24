@@ -348,41 +348,35 @@ public class UI {
     }
 
     public void controls(int frameX, int frameY) {
-
         int textX, textY;
 
-        // TITLE
-        String text = "CONTROLS";
-        textX = getXforCenteredText(text);
+        String title = "CONTROLS";
+        textX = getXforCenteredText(title);
         textY = frameY + gp.tileSize;
-        g2.drawString(text, textX, textY);
+        g2.drawString(title, textX, textY);
+
+        String[] labels = {"Move", "Interact", "Pause", "Options"};
+        String[] keys = {"WASD", "ENTER", "P", "ESC"};
 
         textX = frameX + gp.tileSize;
-        textY += gp.tileSize;
-        g2.drawString("Move", textX, textY);
-        textY += gp.tileSize;
-        g2.drawString("Interact", textX, textY);
-        textY += gp.tileSize;
-        g2.drawString("Pause", textX, textY);
-        textY += gp.tileSize;
-        g2.drawString("Options", textX, textY);
-        textY += gp.tileSize;
+        textY = frameY + gp.tileSize * 2;
+        for (String label : labels) {
+            g2.drawString(label, textX, textY);
+            textY += gp.tileSize;
+        }
 
         textX = frameX + gp.tileSize * 6;
         textY = frameY + gp.tileSize * 2;
-        g2.drawString("WASD", textX, textY);
-        textY += gp.tileSize;
-        g2.drawString("ENTER", textX, textY);
-        textY += gp.tileSize;
-        g2.drawString("P", textX, textY);
-        textY += gp.tileSize;
-        g2.drawString("ESC", textX, textY);
-        textY += gp.tileSize;
+        for (String key : keys) {
+            g2.drawString(key, textX, textY);
+            textY += gp.tileSize;
+        }
 
-        // BACK
+        String backText = "Back";
         textX = frameX + gp.tileSize;
         textY = frameY + gp.tileSize * 9;
-        g2.drawString("Back", textX, textY);
+        g2.drawString(backText, textX, textY);
+
         if (commandNum == 0) {
             g2.drawString(">", textX - 25, textY);
             if (gp.key.enter) {
@@ -390,7 +384,6 @@ public class UI {
                 commandNum = 2;
             }
         }
-
     }
 
     public void endGame(int frameX, int frameY) {

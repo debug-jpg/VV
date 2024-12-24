@@ -1,5 +1,6 @@
 package tile;
 
+import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -55,36 +56,21 @@ public class TileManager {
     }
 
     public void loadMap(String filePath) {
+        try (InputStream is = getClass().getResourceAsStream(filePath);
+             BufferedReader br = new BufferedReader(new InputStreamReader(is))) {
 
-        try {
-            InputStream is = getClass().getResourceAsStream(filePath);
-            BufferedReader br = new BufferedReader(new InputStreamReader(is));
-
-            int col = 0, row = 0;
-
-            while (col < gp.maxWorldCol && row < gp.maxWorldRow) {
+            for (int row = 0; row < gp.maxWorldRow; row++) {
                 String line = br.readLine();
+                if (line == null) break;
 
-                while (col < gp.maxWorldCol) {
-                    String numbers[] = line.split(" ");
-                    if (col < numbers.length) {
-                        int num = Integer.parseInt(numbers[col]);
-
-                        if (col < mapTileNum.length && row < mapTileNum[col].length) {
-                            mapTileNum[col][row] = num;
-                        }
-                    }
-                    col++;
-                }
-
-                if (col == gp.maxWorldCol) {
-                    col = 0;
-                    row++;
+                String[] numbers = line.split(" ");
+                for (int col = 0; col < gp.maxWorldCol && col < numbers.length; col++) {
+                    mapTileNum[col][row] = Integer.parseInt(numbers[col]);
                 }
             }
-            br.close();
-        } catch (Exception e) {
-            e.printStackTrace();
+        }
+        catch (IOException e) {
+
         }
     }
 
