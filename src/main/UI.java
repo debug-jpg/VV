@@ -65,6 +65,8 @@ public class UI {
     public void draw(Graphics2D g2) {
         this.g2 = g2;
 
+        g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_LCD_HRGB);
+
         g2.setFont(arial);
         g2.setColor(Color.WHITE);
 
@@ -79,6 +81,11 @@ public class UI {
     }
 
     public void drawPlayState() {
+        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        g2.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+        g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+        g2.setRenderingHint(RenderingHints.KEY_COLOR_RENDERING, RenderingHints.VALUE_COLOR_RENDER_QUALITY);
+        g2.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_PURE);
         g2.setFont(arial);
         g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 20));
         String score = "SCORE: ";
@@ -116,6 +123,8 @@ public class UI {
     }
 
     public void drawTitleScreen() {
+        g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_LCD_HRGB);
+
         g2.setFont(arial);
         g2.setColor(Color.white);
 
@@ -131,11 +140,13 @@ public class UI {
     public void MainMenu(Graphics2D g2) {
         g2.drawImage(assets.logoImage, 0, 0, gp.tileSize * 2, gp.tileSize * 2, null);
 
+        g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_LCD_HRGB);
+
         Mixer.Info[] mixerInfo = AudioSystem.getMixerInfo();
         String soundStatus = mixerInfo.length == 0 ? "No sound card detected." : "Sound card detected.";
         Color soundColor = mixerInfo.length == 0 ? Color.red : Color.green;
 
-        g2.setFont(arial.deriveFont(Font.BOLD, 13));
+        g2.setFont(arial.deriveFont(Font.BOLD, 55));
         g2.setColor(soundColor);
         g2.drawString(soundStatus, gp.tileSize, gp.tileSize * 12);
 
@@ -144,7 +155,7 @@ public class UI {
         int y = gp.tileSize * 3;
 
         g2.setColor(Color.GRAY);
-        g2.drawString(title, x + 5, y + 5);
+        g2.drawString(title, x + 2, y + 2);
         g2.setColor(Color.WHITE);
         g2.drawString(title, x, y);
 
@@ -154,6 +165,7 @@ public class UI {
     }
 
     public void MenuOptions(Graphics2D g2, String[] options, int startY) {
+        g2.setFont(arial.deriveFont(Font.PLAIN, 32));
         for (int i = 0; i < options.length; i++) {
             int x = getXforCenteredText(options[i]);
             g2.drawString(options[i], x, startY);
@@ -167,6 +179,8 @@ public class UI {
     }
 
     public void MenuToPlay(Graphics2D g2) {
+        g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_LCD_HRGB);
+
         g2.setFont(arial.deriveFont(Font.PLAIN, 60));
         g2.setColor(Color.BLACK);
 
@@ -200,6 +214,8 @@ public class UI {
     }
 
     public void MenuAbout(Graphics2D g2) {
+        g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_LCD_HRGB);
+
         g2.setFont(arial.deriveFont(Font.BOLD, 60));
         g2.setColor(Color.BLACK);
 
@@ -229,6 +245,7 @@ public class UI {
     }
 
     public void drawPauseScreen() {
+        g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_LCD_HRGB);
 
         g2.setFont(end);
         String text = "PAUSED";
@@ -240,6 +257,8 @@ public class UI {
     }
 
     public void drawOptionScreen() {
+
+        g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_LCD_HRGB);
 
         g2.setColor(Color.white);
         g2.setFont(arial);
@@ -270,7 +289,8 @@ public class UI {
     }
 
     public void drawQuizState() {
-        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_LCD_HRGB);
+
         g2.setFont(new Font("Arial", Font.BOLD, 20));
         g2.setColor(Color.BLACK);
 
