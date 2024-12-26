@@ -1,7 +1,6 @@
 package main;
 
 import javax.swing.*;
-import java.awt.event.KeyEvent;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +17,7 @@ class Question {
     }
 }
 
+@SuppressWarnings("all")
 public class QuizManager {
     GamePanel gp;
     List<Question> questions;

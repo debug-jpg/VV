@@ -283,14 +283,32 @@ public class UI {
     public void drawQuizState() {
         g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_LCD_HRGB);
 
-        g2.setFont(new Font("Arial", Font.BOLD, 20));
+        g2.setFont(arial);
         g2.setColor(Color.BLACK);
 
         if (gp.quiz.currentQuestionIndex < gp.quiz.questions.size()) {
             Question question = gp.quiz.questions.get(gp.quiz.currentQuestionIndex);
-            g2.drawString("Question: " + question.questionText, 50, 100);
 
-            g2.setFont(new Font("Arial", Font.PLAIN, 18));
+            int rectX = gp.tileSize * 4;
+            int rectY = 25;
+            int rectWidth = gp.tileSize * 12;
+            int rectHeight = gp.tileSize * 2;
+
+            g2.setColor(Color.WHITE);
+            g2.fillRect(rectX, rectY, rectWidth, rectHeight);
+
+            g2.setColor(Color.BLACK);
+            g2.drawRect(rectX, rectY, rectWidth, rectHeight);
+
+            g2.setFont(arial);
+            FontMetrics metrics = g2.getFontMetrics();
+            int textX = rectX + (rectWidth - metrics.stringWidth("Question: " + question.questionText)) / 2;
+            int textY = rectY + ((rectHeight - metrics.getHeight()) / 2) + metrics.getAscent();
+
+            g2.setColor(Color.BLACK);
+            g2.drawString("Question: " + question.questionText, textX, textY);
+
+            g2.setFont(new Font("Arial", Font.PLAIN, 22));
             for (int i = 0; i < question.options.length; i++) {
                 g2.drawString(question.options[i], 70, 150 + i * 30);
             }
