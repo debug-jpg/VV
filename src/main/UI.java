@@ -290,7 +290,7 @@ public class UI {
             Question question = gp.quiz.questions.get(gp.quiz.currentQuestionIndex);
 
             int rectX = gp.tileSize * 4;
-            int rectY = 25;
+            int rectY = gp.tileSize - 23;
             int rectWidth = gp.tileSize * 12;
             int rectHeight = gp.tileSize * 2;
 
@@ -309,16 +309,36 @@ public class UI {
             g2.drawString("Question: " + question.questionText, textX, textY);
 
             g2.setFont(new Font("Arial", Font.PLAIN, 22));
+            int optionRectX = gp.tileSize;
+            int optionRectYStart = gp.tileSize * 5;
+            int optionRectWidth = gp.tileSize * 6;
+            int optionRectHeight = 30;
+            int optionSpacing = gp.tileSize;
+
             for (int i = 0; i < question.options.length; i++) {
-                g2.drawString(question.options[i], 70, 150 + i * 30);
+                int optionRectY = optionRectYStart + i * (optionRectHeight + optionSpacing);
+
+                g2.setColor(Color.WHITE);
+                g2.fillRect(optionRectX, optionRectY, optionRectWidth, optionRectHeight);
+
+                g2.setColor(Color.BLACK);
+                g2.drawRect(optionRectX, optionRectY, optionRectWidth, optionRectHeight);
+
+                FontMetrics optionMetrics = g2.getFontMetrics();
+                int optionTextX = optionRectX + (optionRectWidth - optionMetrics.stringWidth(question.options[i])) / 2;
+                int optionTextY = optionRectY + ((optionRectHeight - optionMetrics.getHeight()) / 2) + optionMetrics.getAscent();
+
+                g2.setColor(Color.BLACK);
+                g2.drawString(question.options[i], optionTextX, optionTextY);
             }
 
             if (gp.quiz.showAnswerFeedback) {
                 g2.setColor(Color.GREEN);
                 g2.drawString("Correct!", 200, 300);
-            } else if (gp.quiz.currentQuestionIndex > 0) {
+            }
+            else if (gp.quiz.currentQuestionIndex > 0) {
                 g2.setColor(Color.RED);
-                g2.drawString("Incorrect", 200, 300);
+                g2.drawString("Incorrect!!", 200 ,300);
             }
 
             g2.setColor(Color.BLACK);
