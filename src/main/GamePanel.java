@@ -87,14 +87,10 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void setFullScreen() {
-
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        double width = screenSize.getWidth();
-        double height = screenSize.getHeight();
+        fullScreenWidth = (int) screenSize.getWidth();
+        fullScreenHeight = (int) screenSize.getHeight();
         Main.frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        fullScreenWidth = (int) width;
-        fullScreenHeight = (int) height;
-
     }
 
     public void startGameThread() {
@@ -106,11 +102,14 @@ public class GamePanel extends JPanel implements Runnable {
     public void run() {
         final double drawInterval = 1_000_000_000.0 / FPS;
         long lastTime = System.nanoTime();
+        long timer = 0;
+        int drawCount = 0;
         double delta = 0;
 
         while (gameThread != null) {
             long currentTime = System.nanoTime();
             delta += (currentTime - lastTime) / drawInterval;
+            timer += currentTime - lastTime;
             lastTime = currentTime;
 
             while (delta >= 1) {
@@ -118,77 +117,61 @@ public class GamePanel extends JPanel implements Runnable {
                 drawTempScreen();
                 drawScreen();
                 delta--;
+                drawCount++;
+            }
+
+            if (timer >= 1_000_000_000) {
+                drawCount = 0;
+                timer = 0;
             }
         }
     }
 
     public void update() {
-
         if (gameState == playState) {
             saki.update();
-
-            for (int i = 0; i < npc.length; i++) {
-                if (npc[i] != null) {
-                    npc[i].update();
+            for (Entity npcEntity : npc) {
+                if (npcEntity != null) {
+                    npcEntity.update();
                 }
             }
         }
-        if (gameState == pauseState) {
-            // -----
+        if (gameState == pauseState) {}
+    }
+
+    public void updateEntityList() {
+        entityList.clear();
+        entityList.add(saki);
+
+        for (Entity npcEntity : npc) {
+            if (npcEntity != null) {
+                entityList.add(npcEntity);
+            }
         }
+
+        for (Entity objEntity : obj) {
+            if (objEntity != null) {
+                entityList.add(objEntity);
+            }
+        }
+
+        entityList.sort(Comparator.comparingInt(e -> e.worldY));
     }
 
     public void drawTempScreen() {
-
-        // ---------- TITLE ----------//
         if (gameState == titleState) {
             ui.draw(g2);
         }
-        // ---------- OTHERS ----------//
         else {
-
-            // ---------- TILE ------------//
             tile.draw(g2);
+            updateEntityList();
 
-            // ADDS ENTITIES
-            entityList.add(saki);
-
-            for (int i = 0; i < npc.length; i++) {
-                if (npc[i] != null) {
-                    entityList.add(npc[i]);
-                }
+            for (Entity entity : entityList) {
+                entity.draw(g2);
             }
 
-            for (int i = 0; i < obj.length; i++) {
-                if (obj[i] != null) {
-                    entityList.add(obj[i]);
-                }
-            }
-
-            // SORT
-            Collections.sort(entityList, new Comparator<Entity>() {
-                @Override
-                public int compare(Entity e1, Entity e2) {
-                    int result = Integer.compare(e1.worldY, e2.worldY);
-                    return result;
-                }
-            });
-
-            // DRAW ENTITIES
-            for (int i = 0; i < entityList.size(); i++) {
-                entityList.get(i).draw(g2);
-            }
-
-            // EMPTY ENTITIES
-            for (int i = 0; i < entityList.size(); i++) {
-                entityList.remove(i);
-            }
-
-            // ---------- UI ----------//
             ui.draw(g2);
-
         }
-
     }
 
     public void drawScreen() {
