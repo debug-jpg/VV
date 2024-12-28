@@ -4,11 +4,13 @@ import entity.Entity;
 import object.Heart;
 import object.Key;
 
+import javax.imageio.ImageIO;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Mixer;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 
 @SuppressWarnings("all")
 public class UI {
@@ -38,7 +40,6 @@ public class UI {
 
         Key key = new Key(gp);
         keyImage = key.image;
-
 
         // CREATE HUD OBJECT
         Entity heart = new Heart(gp);
@@ -80,10 +81,10 @@ public class UI {
         g2.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_PURE);
         g2.setFont(arial);
         g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 20));
-        String score = "SCORE: ";
+
         int x = gp.tileSize * 2;
         int y = gp.tileSize;
-        g2.drawString(score, x, y);
+        g2.drawString("Score: " + gp.quiz.score, x, y);
     }
 
     public void drawPlayerLife() {
@@ -307,6 +308,22 @@ public class UI {
 
             g2.setColor(Color.BLACK);
             g2.drawString("Question: " + question.questionText, textX, textY);
+
+            if (question.imagePath != null && !question.imagePath.isEmpty()) {
+                try {
+                    ImageIcon imageIcon = new ImageIcon(getClass().getResource(question.imagePath));
+                    int imageX = gp.tileSize * 9 + 32;
+                    int imageY = gp.tileSize * 6 - 16;
+                    int imageWidth = gp.tileSize * 8;
+                    int imageHeight = gp.tileSize * 4;
+
+                    g2.drawImage(imageIcon.getImage(), imageX, imageY, imageWidth, imageHeight, null);
+                }
+                catch (Exception e) {
+                    g2.setColor(Color.RED);
+                    g2.drawString("Image not found: " + question.imagePath, gp.tileSize * 8, gp.tileSize * 2);
+                }
+            }
 
             g2.setFont(new Font("Arial", Font.PLAIN, 22));
             int optionRectX = gp.tileSize;

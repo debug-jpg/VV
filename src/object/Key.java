@@ -4,6 +4,7 @@ import entity.Entity;
 import main.GamePanel;
 
 public class Key extends Entity {
+    public boolean accessibilty = false;
 
     public Key(GamePanel gp) {
         super(gp);

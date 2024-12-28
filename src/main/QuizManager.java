@@ -1,19 +1,25 @@
 package main;
 
+import entity.Entity;
+import object.Key;
+
 import javax.swing.*;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 class Question {
     String questionText;
     String[] options;
     int correctOption;
+    String imagePath;
 
-    public Question(String questionText, String[] options, int correctOption) {
+    public Question(String questionText, String[] options, int correctOption, String imagePath) {
         this.questionText = questionText;
         this.options = options;
         this.correctOption = correctOption;
+        this.imagePath = imagePath;
     }
 }
 
@@ -25,12 +31,18 @@ public class QuizManager {
     public int score;
     public boolean showAnswerFeedback;
 
+    private Key currentKey;
+
     public QuizManager(GamePanel gp) {
         this.gp = gp;
         questions = loadQuestions("/quiz/quiz.txt");
         currentQuestionIndex = 0;
         score = 0;
         showAnswerFeedback = false;
+    }
+
+    public void setCurrentKey(Key key) {
+        this.currentKey = key;
     }
 
     public List<Question> loadQuestions(String filepath) {
@@ -48,7 +60,8 @@ public class QuizManager {
                     options[i] = reader.readLine();
                 }
                 int correctOption = Integer.parseInt(reader.readLine());
-                questions.add(new Question(questionText, options, correctOption));
+                String imagePath = reader.readLine();
+                questions.add(new Question(questionText, options, correctOption, imagePath));
 
                 reader.readLine();
             }
@@ -57,6 +70,7 @@ public class QuizManager {
             JOptionPane.showMessageDialog(null, "Error Reading this file: " + e.getMessage() + " Exiting...", "Error!!", JOptionPane.ERROR_MESSAGE);
             System.exit(0);
         }
+        Collections.shuffle(questions);
         return questions;
     }
 
@@ -66,11 +80,16 @@ public class QuizManager {
             if (answerIndex == question.correctOption) {
                 score++;
                 showAnswerFeedback = true;
+
+                if (currentKey != null) {
+                    currentKey.accessibilty = true;
+                }
+
+                currentQuestionIndex++;
             } else {
                 showAnswerFeedback = false;
             }
-            currentQuestionIndex++;
-
+            gp.gameState = gp.playState;
             gp.ui.drawQuizState();
         }
     }

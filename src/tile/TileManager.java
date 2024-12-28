@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import javax.imageio.ImageIO;
+import javax.swing.*;
+
 import main.GamePanel;
 import main.UtilityTool;
 
@@ -49,7 +51,8 @@ public class TileManager {
             tile[index].image = tool.scaledImage(tile[index].image, gp.tileSize, gp.tileSize);
             tile[index].collision = collision;
         } catch (IOException e) {
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "An error has occured. Exiting.", "Visual Venture", JOptionPane.ERROR_MESSAGE);
+            System.exit(0);
         }
     }
 
@@ -68,7 +71,8 @@ public class TileManager {
             }
         }
         catch (IOException e) {
-
+            JOptionPane.showMessageDialog(null, "Error loading map: " + filePath + ". Exiting.", "Visual Venture", JOptionPane.ERROR_MESSAGE);
+            System.exit(0);
         }
     }
 

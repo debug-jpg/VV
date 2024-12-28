@@ -8,7 +8,6 @@ import java.util.Comparator;
 import javax.swing.*;
 
 import tile.TileManager;
-
 import entity.*;
 
 @SuppressWarnings("all")
@@ -78,7 +77,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     public void setupGame() {
         assetSetter.setObject();
-        assetSetter.setNPC();
+//        assetSetter.setNPC();
         gameState = titleState;
 
         tempScreen = new BufferedImage(screenWidth, screenHeight, BufferedImage.TYPE_INT_ARGB_PRE);

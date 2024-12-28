@@ -4,6 +4,7 @@ B. Love
 C. Ann
 D. Geoffrey
 3
+/background/bg_main.png
 
 Prosekai Units
 A. Leo/Need
@@ -11,3 +12,12 @@ B. MORE MORE JUMP
 C. Wonderland x Showtime
 D. N25
 2
+/background/camhi.png
+
+Genhin Main
+A. Aether
+B. Lumine
+C. Isekai
+D. Sekai
+0
+/background/bg_main.png

@@ -2,6 +2,7 @@ package entity;
 
 import main.GamePanel;
 import main.KeyHandler;
+import object.Key;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -61,16 +62,21 @@ public class Saki extends Entity {
     }
 
     public void pickUpObject(int i) {
-
         if (i != 999) {
-
             String objectName = gp.obj[i].name;
 
             switch (objectName) {
                 case "Key":
-                    hasKey++;
-                    gp.obj[i] = null;
-                    gp.ui.showMessage("You got a key!");
+                    Key key = (Key) gp.obj[i];
+                    if (!key.accessibilty) {
+                        gp.quiz.setCurrentKey(key);
+                        gp.gameState = gp.dialogState;
+                        gp.ui.drawQuizState();
+                    }
+                    else {
+                        hasKey++;
+                        gp.obj[i] = null;
+                    }
                     break;
                 case "Fence":
                     if (hasKey > 0) {

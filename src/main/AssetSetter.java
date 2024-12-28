@@ -13,7 +13,6 @@ import java.io.IOException;
 public class AssetSetter {
 
     GamePanel gp;
-    ;
 
     public BufferedImage TextBox, backgroundImage, logoImage, btnImage;
 
@@ -80,13 +79,13 @@ public class AssetSetter {
 
     }
 
-    public void setNPC() {
-
-        gp.npc[0] = new NPC_OldMan(gp);
-        gp.npc[0].worldX = gp.tileSize * 17;
-        gp.npc[0].worldY = gp.tileSize * 26;
-
-    }
+//    public void setNPC() {
+//
+//        gp.npc[0] = new NPC_OldMan(gp);
+//        gp.npc[0].worldX = gp.tileSize * 17;
+//        gp.npc[0].worldY = gp.tileSize * 26;
+//
+//    }
 }
 
 class ObjectData {

@@ -181,22 +181,11 @@ public class KeyHandler implements KeyListener {
 //        int answerIndex = -1;
 
         switch (code) {
-            case KeyEvent.VK_1:
-                gp.quiz.checkAnswer(0);
-                break;
-            case KeyEvent.VK_2:
-                gp.quiz.checkAnswer(1);
-                break;
-            case KeyEvent.VK_3:
-                gp.quiz.checkAnswer(2);
-                break;
-            case KeyEvent.VK_4:
-                gp.quiz.checkAnswer(3);
-                break;
-            default:
-                JOptionPane.showMessageDialog(null, "Error KeyCode", "Place Guessing", JOptionPane.ERROR_MESSAGE);
-                gp.gameState = gp.playState;
-                break;
+            case KeyEvent.VK_1 -> gp.quiz.checkAnswer(0);
+            case KeyEvent.VK_2 -> gp.quiz.checkAnswer(1);
+            case KeyEvent.VK_3 -> gp.quiz.checkAnswer(2);
+            case KeyEvent.VK_4 -> gp.quiz.checkAnswer(3);
+            default -> gp.gameState = gp.playState;
         }
 
 //        if (answerIndex != -1) {
