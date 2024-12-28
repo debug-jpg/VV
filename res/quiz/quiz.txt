@@ -1,23 +1,495 @@
-Couple of the year.
-A. Mary
-B. Love
-C. Ann
-D. Geoffrey
-3
-/background/bg_main.png
+Which city in the Philippines is famous for its Spanish colonial architecture and a unique local sausage called Vigan Longganisa?
+Sirao, Cebu City
+Vigan, Ilocos Sur
+Alaminos City
+Balayan City
+1
+/placeholder/image.png
 
-Prosekai Units
-A. Leo/Need
-B. MORE MORE JUMP
-C. Wonderland x Showtime
-D. N25
-2
-/background/camhi.png
-
-Genhin Main
-A. Aether
-B. Lumine
-C. Isekai
-D. Sekai
+Which city in the Philippines is famous for its panoramic views of Taal Volcano, cool climate, and local dishes like bulalo (beef marrow stew)?
+Tagaytay
+Manila
+Pasig
+Antipolo
 0
-/background/bg_main.png
+/placeholder/image.png
+
+Which place in the Philippines is known for being one of the most active volcanoes and features a lake within its caldera?
+Mayon Volcano
+Pinatubo
+Taal Volcano
+Mount Banahaw
+2
+/placeholder/image.png
+
+Which historical site in Catarman, Camiguin, is marked by a large cross and becomes visible during low tide due to its submersion?
+Panglao Island
+Puerto Princesa
+White river of Camiguin
+Sunken Cemetery
+3
+/placeholder/image.png
+
+Which place in Manila is famous for its sunset views over Manila Bay and is a popular spot for evening strolls and relaxation?
+Fort San Pedro
+Roxas Boulevard
+Sunken Cemetery
+Osmena Peak
+1
+/placeholder/image.png
+
+Which place in Manila is a historical site dedicated to Jos Rizal and features the Rizal Monument?
+Tagaytay
+Manila
+Antipolo
+Rizal Park, Manila
+3
+/placeholder/image.png
+
+Which place in the Philippines is known for the Quezon Memorial Circle, a historical monument dedicated to former President Manuel L. Quezon, and is a hub for cultural and political activities?
+Alaminos City
+Baguio City
+Quezon City
+Silay City
+2
+/placeholder/image.png
+
+Which place in Palawan is famous for the Puerto Princesa Underground River, a UNESCO World Heritage Site with an impressive subterranean river system?
+Puerto Princesa,
+Roxas Boulevard
+Simala Shrine
+Magellan Cross
+0
+/placeholder/image.png
+
+Which place in the Philippines is the longest bridge, connecting Leyte and Samar, and offers picturesque views of the San Juanico Strait?
+Osmena Peak
+Magellan Cross
+Roxas Boulevard
+San Juanico Bridge
+3
+/placeholder/image.png
+
+Which place in Cebu is often called the Little Amsterdam for its vibrant flower gardens and scenic views?
+Sirao Pictorial Garden, Cebu City
+Roxas Boulevard
+Magellan Cross
+Osmena Peak
+0
+/placeholder/image.png
+
+Which place in Sibonga, Cebu, is known for its grand Marian shrine with beautiful architecture and is a popular site for pilgrimage and devotion?
+Sirao Pictorial Garden, Cebu City
+Roxas Boulevard
+Cebu City
+Simala Shrine, Sibonga, Cebu
+3
+/placeholder/image.png
+
+Which place in Negros is known as the Paris of Negros for its well-preserved heritage houses and is celebrated for its Culinary Festival?
+Cebu City
+Davao City
+Zamboanga City
+Silay City
+3
+/placeholder/image.png
+
+Which island in Zambales is renowned for its pristine white sand beaches and clear waters, making it an ideal destination for swimming and relaxation?
+Digyo
+Boracay
+Potipot Island
+Seco Island
+2
+/placeholder/image.png
+
+Which cave in Sagada is famous for its spectacular limestone formations and is the largest cave in the area, offering a thrilling adventure with its impressive stalactites and stalagmites?
+Sumaguing Cave, Sagada
+Puerto Princesa, Palawan
+Sohoton Cave
+Sugba Lagoon
+0
+/placeholder/image.png
+
+Which lagoon in Del Carmen, Surigao Del Norte, is known for its crystal-clear waters and is ideal for kayaking and paddleboarding amidst scenic surroundings?
+Sumaguing Cave, Sagada
+Puerto Princesa, Palawan
+Sohoton Cave
+Sugba Lagoon
+3
+/placeholder/image.png
+
+Which cave in Socorro, Surigao Del Norte, is part of the Sohoton National Park and is renowned for its stunning rock formations and pristine waters?
+Sumaguing Cave, Sagada
+Puerto Princesa, Palawan
+Sohoton Cave
+Sugba Lagoon
+2
+/placeholder/image.png
+
+Which waterfall in Cebu is located near Oslob and is known for its curtain-like cascades and serene atmosphere, where visitors can also experience whale shark watching?
+ Tumalog Falls
+Asik Asik Falls
+Kaparkan Falls
+Tangadan Falls
+0
+/placeholder/image.png
+
+Which waterfall in Bislig, Surigao Del Sur, is known for its multi-tiered cascades and is often referred to as the Little Niagara of the Philippines?
+Tinuy-an Falls
+Asik Asik Falls
+Kaparkan Falls
+Tangadan Falls
+0
+/placeholder/image.png
+
+Which waterfall in Iligan City, Lanao Del Norte, is named hidden in Filipino and is famous for its refreshing blue-green waters and the adventure of descending around 500 steps to reach it?
+Asik Asik Falls
+Kaparkan Falls
+Tinuy-an Falls
+Tinago Falls
+3
+/placeholder/image.png
+
+Which waterfall in San Gabriel, La Union, is popular among adventure seekers for its natural beauty and activities like rappelling and cliff diving?
+Tinago Falls
+Tangadan Falls
+Tinuy-an Falls
+ Asik Asik Falls
+1
+/placeholder/image.png
+
+Which city in the Philippines is renowned for its annual Fiesta Pilar celebration, honoring Our Lady of the Pilar with vibrant street parades and cultural events?
+Cebu City
+Davao City
+Zamboanga City
+Silay City
+2
+/placeholder/image.png
+
+Which spot in Boracay Island is renowned for its cliff diving and stunning ocean views, making it a top destination for thrill-seekers and adventure enthusiasts?
+Osmena Peak
+Magellan Cross
+Roxas Boulevard
+Ariel's Point
+3
+/placeholder/image.png
+
+Which waterfall in North Cotabato is known for its unique curtain-like cascade of water flowing down a moss-covered cliff, surrounded by lush forest?
+Asik Asik Falls
+Tangadan Falls
+Tinuy-an Falls
+ Tinago Falls
+0
+/placeholder/image.png
+
+Which bay in Balayan City is known for its beautiful coastal areas and the Pistay Dayat (Sea Festival)?
+Manila Bay
+Balayan Bay
+Davao
+Manila
+1
+/placeholder/image.png
+
+Which island in Northern Samar is famous for its dramatic rock formations, making it a great spot for photography and exploring unique geological features?
+Panglao Island
+Seco Island
+Biri Island
+Potipot Island
+2
+/placeholder/image.png
+
+Which place in Bohol is known for its unique, cone-shaped hills that turn brown during the dry season, resembling chocolate mounds?
+Chocolate Hills
+Roxas Boulevard
+C.Magellan Cross
+Osmena Peak
+0
+/placeholder/image.png
+
+Which river in Cebu is known for its eco-adventure tours, including river cruising and exploring mangrove forests?
+Osmena Park
+Roxas Boulevard
+Magellan Cross
+Bojon River
+3
+/placeholder/image.png
+
+Which beach in Boracay is famous for its powdery white sand, vibrant nightlife, and hosts the annual Boracay International Funboard Cup?
+Boracay
+Dahican Beach
+White Beach
+Potipot Beach
+2
+/placeholder/image.png
+
+Which sacred mountain in the Province of Tawi-Tawi offers panoramic views and is a popular spot for hiking?
+Jolo
+Osmena Peak
+Silay
+Bud Bongao
+3
+/placeholder/image.png
+
+Which museum in Butuan City showcases artifacts from the ancient Butuan Kingdom and the famous Balanghai boats?
+Butuan National Museum
+Intramuros
+Casa Gorodo Museum
+Vigan City
+0
+/placeholder/image.png
+
+Which river in Cagayan De Oro is renowned for whitewater rafting, offering thrilling rapids and adventure tours through lush landscapes?
+Sugba
+Cagayan De Oro River
+Sunken
+Osmena Peak
+1
+/placeholder/image.png
+
+Which cave in Cagayan is known for its seven chambers and a natural cathedral-like space in the main chamber, often used for religious ceremonies?
+Sumaguing Cave, Sagada
+Puerto Princesa, Palawan
+Sohoton Cave
+Callao Cave
+3
+/placeholder/image.png
+
+Which historic house museum in Cebu City showcases Spanish colonial architecture and artifacts from the 19th century?
+Butuan National Museum
+Intramuros
+Casa Gorodo Museum
+Vigan City
+2
+/placeholder/image.png
+
+Which historic hotel in Baguio is known for its ruins, rumored hauntings, and panoramic views of the city?
+Diplomat Hotel
+Osmena Peak
+Silay
+Bud Bongao
+0
+/placeholder/image.png
+
+Which island in the Cuatro Islas of Leyte is known for its white sand beaches and clear waters, ideal for snorkeling and swimming?
+Digyo Island
+Boracay
+Potipot Island
+Seco Island
+0
+/placeholder/image.png
+
+Which river in Hinatuan, Surigao Del Sur is famous for its deep blue waters and mysterious allure, often hosting a magical feeding ritual of fish?
+White River
+Enchanted River
+Cagayan De Oro River
+Bojo River
+1
+/placeholder/image.png
+
+Which fort in Cebu City is the oldest and smallest in the Philippines, known for its historical significance and as a key Spanish colonial defense structure?
+Silay
+Sunken Cemetery
+Fort San Pedro
+Ilagan
+2
+/placeholder/image.png
+
+Which island in Zamboanga City is known for its pink sand beaches, a rare natural phenomenon, and is part of the citys island-hopping tours?
+Great Santa Cruz Island
+Jolo Island
+Potipot Island
+Seco Island
+0
+/placeholder/image.png
+
+Which historic walled city in Manila is famous for its Spanish colonial architecture, including Fort Santiago and San Agustin Church?
+Manila
+Intramuros
+Vigan City
+Pasig
+1
+/placeholder/image.png
+
+Which island in the Zamboanga Peninsula is known for its rich cultural heritage and the Bai (Princess) Bandi Festival, showcasing the traditions of the Tausug people?
+Digyo Island
+Potipot Island
+Seco Island
+Jolo Island
+3
+/placeholder/image.png
+
+Which island in Palompon, Leyte is famous for its long, white sandbars stretching into the turquoise sea, making it a popular destination for swimming and sunbathing?
+Digyo Island
+Kalanggaman Island
+Potipot Island
+Seco Island
+1
+/placeholder/image.png
+
+Which waterfall in Tineg, Abra is known for its terraced waterfalls, resembling natural rice terraces, and is considered a hidden gem?
+Asik Asik Falls
+Kaparkan Falls
+Tinuy-an Falls
+Tinago Falls
+1
+/placeholder/image.png
+
+Which volcano in Albay is famous for its perfectly symmetrical cone shape and is one of the most active volcanoes in the Philippines, making it a popular spot for hiking and photography?
+Mount Banahaw
+Mayon Volcano
+Taal Volcano
+Mount Pinatubo
+1
+/placeholder/image.png
+
+Which city is known as the City of Majestic Waterfalls, featuring stunning waterfalls like Maria Cristina Falls and Tinago Falls?
+Cebu City
+Alaminos City
+Davao City
+Iligan City
+3
+/placeholder/image.png
+
+Which city in Rizal is famous for its Antipolo Cathedral, a major pilgrimage site for the Our Lady of Peace and Good Voyage?
+Pasig
+Tagaytay
+Antipolo
+Rizal Park
+2
+/placeholder/image.png
+
+Which city is known for its delicious Durian fruit and is home to the Philippine Eagle Center, which helps conserve the critically endangered Philippine eagle?
+Cebu City
+Alaminos City
+Davao City
+Zamboanga City
+2
+/placeholder/image.png
+
+Which city is best known for the Hundred Islands National Park, a popular tourist destination with over 100 islands and islets, ideal for island hopping and water activities?
+Cebu City
+Alaminos City
+Davao City
+Zamboanga City
+1
+/placeholder/image.png
+
+Which city is called the Summer Capital of the Philippines due to its cool climate and scenic mountainous landscape, and is renowned for its annual Panagbenga Festival?
+Cebu City
+Davao City
+Zamboanga City
+Baguio City
+3
+/placeholder/image.png
+
+Which crater lake in South Cotabato is renowned for its clear, emerald waters and is a sacred place for the Tboli people, offering a serene environment for hiking and camping?
+Lake Sebu
+Lake Holon
+Sugba Lagoon
+Tangadan
+1
+/placeholder/image.png
+
+Which place in South Cotabato is famous for its three beautiful lakes, the scenic Seven Falls, and traditional Tboli weaving and cultural heritage?
+Lake Sebu
+Lake Holon
+Sugba Lagoon
+Tangadan
+0
+/placeholder/image.png
+
+Which historic landmark in Cebu City marks the site where Ferdinand Magellan planted a cross in 1521 to symbolize the beginning of Christianity in the Philippines?
+Ilagan
+Magellan Cross
+Fort San Pedro
+Osmena Peak
+1
+/placeholder/image.png
+
+Which natural tidal pools in Pilar, Siargao Island are famous for their crystal-clear waters and unique rock formations, ideal for swimming and photography?
+Kalanggaman
+Magpupungko Rock Pools
+Digyo
+Silay
+1
+/placeholder/image.png
+
+Which island in Lungsod ng Isabela is known for its pristine white sand beaches and clear blue waters, making it a great spot for relaxation and beach activities?
+Panglao Island
+Seco Island
+Biri Island
+Malamawi Island
+3
+/placeholder/image.png
+
+Which capital city of the Philippines is home to historic landmarks such as Intramuros and Rizal Park, and is known for its vibrant Baywalk along Roxas Boulevard?
+Manila
+Quezon
+Pasig
+Tagaytay
+0
+/placeholder/image.png
+
+Which mountain in Laguna is a popular destination for hikers and is considered sacred by many locals, known for its mystical aura and rich biodiversity?
+Mount Banahaw
+Mayon Volcano
+Taal Volcano
+Mount Pinatubo
+0
+/placeholder/image.png
+
+Which cave in Negros Oriental is one of the largest and most extensive, known for its impressive stalactite and stalagmite formations and historical significance?
+Sohotoj Cave
+Callao Cave
+Odlomon Cave
+Sumaguing Cave
+2
+/placeholder/image.png
+
+Which peak in Badian, Cebu is the highest point in Cebu, offering breathtaking panoramic views and is a popular spot for trekking and sunrise viewing?
+Sugba
+Cagayan De Oro River
+Sunken
+Osmena Peak
+3
+/placeholder/image.png
+
+Which coast in Surigao del Norte is known for its rugged coastline and beautiful surf spots, including the famous surfing town of Siargao?
+Pacific Coast
+Roxas Boulevard
+Sugba Lagoon
+Lake Holon
+0
+/placeholder/image.png
+
+Which island in Bohol is famous for its white sand beaches, particularly Alona Beach, and excellent diving and snorkeling spots?
+Panglao Island
+Seco Island
+Biri Island
+Potipot Island
+0
+/placeholder/image.png
+
+Which mountain in Zambales is known for its dramatic eruption in 1991 and the resulting caldera lake, now a popular trekking and sightseeing destination?
+Mount Banahaw
+Mayon Volcano
+Taal Volcano
+Mount Pinatubo
+3
+/placeholder/image.png
+
+Which city in Metro Manila is known for its Pasig River, historical sites such as the Immaculate Conception Cathedral, and the Ortigas Center business district?
+Manila
+Quezon
+Pasig
+Tagaytay
+3
+/placeholder/image.png
+
+Which island is known for its unspoiled beauty and white sand beaches, making it a perfect destination for those looking to escape the crowds and enjoy nature?
+Panglao Island
+Seco Island
+Biri Island
+Potipot Island
+1
+/placeholder/image.png

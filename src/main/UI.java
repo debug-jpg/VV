@@ -50,7 +50,6 @@ public class UI {
     }
 
     public void showMessage(String text) {
-
         message = text;
         messageOn = true;
     }
@@ -74,45 +73,17 @@ public class UI {
     }
 
     public void drawPlayState() {
-        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        g2.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
-        g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-        g2.setRenderingHint(RenderingHints.KEY_COLOR_RENDERING, RenderingHints.VALUE_COLOR_RENDER_QUALITY);
-        g2.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_PURE);
+        g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_LCD_HRGB);
+
         g2.setFont(arial);
         g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 20));
 
         int x = gp.tileSize * 2;
         int y = gp.tileSize;
         g2.drawString("Score: " + gp.quiz.score, x, y);
-    }
 
-    public void drawPlayerLife() {
-
-        int x = gp.tileSize / 2;
-        int y = gp.tileSize / 2;
-
-        for (int i = 0; i < gp.saki.maxLife / 2; i++) {
-            g2.drawImage(heart_blank, x, y, null);
-            x += gp.tileSize;
-        }
-
-        x = gp.tileSize / 2;
-
-        for (int i = 0; i < gp.saki.life; i++) {
-            if (i % 2 == 0) {
-                g2.drawImage(heart_half, x, y, null);
-            }
-            else {
-                g2.drawImage(heart_full, x, y, null);
-                x += gp.tileSize;
-            }
-        }
-
-        if (gp.saki.life % 2 != 0) {
-            x += gp.tileSize;
-        }
-
+        x = gp.tileSize * 10;
+        g2.drawString("Key: " + gp.saki.hasKey, x, y);
     }
 
     public void drawTitleScreen() {
@@ -139,7 +110,7 @@ public class UI {
         String soundStatus = mixerInfo.length == 0 ? "No sound card detected." : "Sound card detected.";
         Color soundColor = mixerInfo.length == 0 ? Color.red : Color.green;
 
-        g2.setFont(arial.deriveFont(Font.BOLD, 55));
+        g2.setFont(arial.deriveFont(Font.BOLD, 20));
         g2.setColor(soundColor);
         g2.drawString(soundStatus, gp.tileSize, gp.tileSize * 12);
 
@@ -303,11 +274,11 @@ public class UI {
 
             g2.setFont(arial);
             FontMetrics metrics = g2.getFontMetrics();
-            int textX = rectX + (rectWidth - metrics.stringWidth("Question: " + question.questionText)) / 2;
+            int textX = rectX + (rectWidth - metrics.stringWidth(question.questionText)) / 2;
             int textY = rectY + ((rectHeight - metrics.getHeight()) / 2) + metrics.getAscent();
 
             g2.setColor(Color.BLACK);
-            g2.drawString("Question: " + question.questionText, textX, textY);
+            g2.drawString(question.questionText, textX, textY);
 
             if (question.imagePath != null && !question.imagePath.isEmpty()) {
                 try {
@@ -358,8 +329,8 @@ public class UI {
                 g2.drawString("Incorrect!!", 200 ,300);
             }
 
-            g2.setColor(Color.BLACK);
-            g2.drawString("Score: " + gp.quiz.score, 10, 20);
+            g2.setColor(Color.WHITE);
+            g2.drawString("NUMBER: " + gp.quiz.currentQuestionIndex, 10, 20);
         }
     }
 

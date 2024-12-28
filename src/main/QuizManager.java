@@ -37,7 +37,7 @@ public class QuizManager {
         this.gp = gp;
         questions = loadQuestions("/quiz/quiz.txt");
         currentQuestionIndex = 0;
-        score = 0;
+        score = 10;
         showAnswerFeedback = false;
     }
 
@@ -84,13 +84,23 @@ public class QuizManager {
                 if (currentKey != null) {
                     currentKey.accessibilty = true;
                 }
-
-                currentQuestionIndex++;
             } else {
                 showAnswerFeedback = false;
             }
-            gp.gameState = gp.playState;
-            gp.ui.drawQuizState();
+
+            currentQuestionIndex++;
+            if (currentQuestionIndex >= questions.size()) {
+                endQuiz();
+            }
+            else {
+                gp.gameState = gp.playState;
+                gp.ui.drawQuizState();
+            }
         }
+    }
+
+    private void endQuiz() {
+        JOptionPane.showMessageDialog(null, "Oh no, you didn't get the target score. Quiz over.", "Visual Venture", JOptionPane.INFORMATION_MESSAGE);
+        System.exit(0);
     }
 }
