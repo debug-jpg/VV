@@ -272,7 +272,7 @@ public class UI {
             g2.setColor(Color.BLACK);
             g2.drawRect(rectX, rectY, rectWidth, rectHeight);
 
-            g2.setFont(arial);
+            g2.setFont(arial.deriveFont(Font.BOLD, 24));
             FontMetrics metrics = g2.getFontMetrics();
             int textX = rectX + (rectWidth - metrics.stringWidth(question.questionText)) / 2;
             int textY = rectY + ((rectHeight - metrics.getHeight()) / 2) + metrics.getAscent();
@@ -292,7 +292,7 @@ public class UI {
                 }
                 catch (Exception e) {
                     g2.setColor(Color.RED);
-                    g2.drawString("Image not found: " + question.imagePath, gp.tileSize * 8, gp.tileSize * 2);
+                    g2.drawString("Image not found: " + question.imagePath, gp.tileSize * 9 + 32, gp.tileSize * 6 - 16);
                 }
             }
 
