@@ -29,15 +29,16 @@ public class TileManager {
 
     public void getTileImage() {
 
-        setup(0, "grass", false);
-        setup(1, "wall", true);
+        setup(0, "PlainGrass_2", false);
+        setup(1, "TextureGrass_3", false);
         setup(2, "water", true);
-        setup(3, "earth", false);
+        setup(3, "PlainGrass_1", false);
         setup(4, "treewgrass", true);
         setup(5, "redmrwgrass", true);
         setup(6, "bluemrwgrass", true);
         setup(7, "lake1grass", true);
         setup(8, "lake2grass", true);
+        setup(9, "TextureGrass_2", false);
 
     }
 
