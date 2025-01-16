@@ -185,7 +185,6 @@ public class KeyHandler implements KeyListener {
             case KeyEvent.VK_2 -> gp.quiz.checkAnswer(1);
             case KeyEvent.VK_3 -> gp.quiz.checkAnswer(2);
             case KeyEvent.VK_4 -> gp.quiz.checkAnswer(3);
-            default -> gp.gameState = gp.playState;
         }
 
 //        if (answerIndex != -1) {
