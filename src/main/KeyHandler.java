@@ -75,26 +75,23 @@ public class KeyHandler implements KeyListener {
 
         // PLAY STATE
         if (gp.gameState == gp.playState) {
-            if (code == KeyEvent.VK_W || code == KeyEvent.VK_UP) {
-                up = true;
-            }
-            if (code == KeyEvent.VK_S || code == KeyEvent.VK_DOWN) {
-                down = true;
-            }
-            if (code == KeyEvent.VK_A || code == KeyEvent.VK_LEFT) {
-                left = true;
-            }
-            if (code == KeyEvent.VK_D || code == KeyEvent.VK_RIGHT) {
-                right = true;
-            }
-            if (code == KeyEvent.VK_P) {
-                gp.gameState = gp.pauseState;
-            }
-            if (code == KeyEvent.VK_ENTER || code == KeyEvent.VK_SPACE) {
-                enter = true;
-            }
-            if (code == KeyEvent.VK_ESCAPE) {
-                gp.gameState = gp.optionState;
+            switch (code) {
+                // MOVEMENT
+                case KeyEvent.VK_W -> up = true;
+                case KeyEvent.VK_A -> left = true;
+                case KeyEvent.VK_S -> down = true;
+                case KeyEvent.VK_D -> right = true;
+
+                case KeyEvent.VK_UP -> up = true;
+                case KeyEvent.VK_LEFT -> left = true;
+                case KeyEvent.VK_DOWN -> down = true;
+                case KeyEvent.VK_RIGHT -> right = true;
+
+                // OPTIONS
+                case KeyEvent.VK_P -> gp.gameState = gp.pauseState;
+                case KeyEvent.VK_ENTER -> enter = true;
+                case KeyEvent.VK_SPACE -> enter = true;
+                case KeyEvent.VK_ESCAPE -> gp.gameState = gp.optionState;
             }
         } else if (gp.gameState == gp.pauseState) {
             if (code == KeyEvent.VK_P) {
@@ -131,12 +128,8 @@ public class KeyHandler implements KeyListener {
 
         int maxCommandNum = 0;
         switch (gp.ui.subState) {
-            case 0:
-                maxCommandNum = 4;
-                break;
-            case 2:
-                maxCommandNum = 1;
-                break;
+            case 0 -> maxCommandNum = 4;
+            case 2 -> maxCommandNum = 1;
         }
 
         if (code == KeyEvent.VK_W || code == KeyEvent.VK_UP) {
@@ -204,17 +197,16 @@ public class KeyHandler implements KeyListener {
     public void keyReleased(KeyEvent e) {
         int code = e.getKeyCode();
 
-        if (code == KeyEvent.VK_W || code == KeyEvent.VK_UP) {
-            up = false;
-        }
-        if (code == KeyEvent.VK_S || code == KeyEvent.VK_DOWN) {
-            down = false;
-        }
-        if (code == KeyEvent.VK_A || code == KeyEvent.VK_LEFT) {
-            left = false;
-        }
-        if (code == KeyEvent.VK_D || code == KeyEvent.VK_RIGHT) {
-            right = false;
+        switch (code) {
+            case KeyEvent.VK_W -> up = false;
+            case KeyEvent.VK_A -> left = false;
+            case KeyEvent.VK_S -> down = false;
+            case KeyEvent.VK_D -> right = false;
+
+            case KeyEvent.VK_UP -> up = false;
+            case KeyEvent.VK_LEFT -> left = false;
+            case KeyEvent.VK_DOWN -> down = false;
+            case KeyEvent.VK_RIGHT -> right = false;
         }
     }
 }
