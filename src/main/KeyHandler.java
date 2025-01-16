@@ -15,15 +15,8 @@ public class KeyHandler implements KeyListener {
     }
 
     @Override
-    public void keyTyped(KeyEvent e) {
-    }
+    public void keyTyped(KeyEvent e) {}
 
-    /**
-     * Handles key press events in the game.
-     * Different key press actions are performed based on the current game state.
-     *
-     * @param e the KeyEvent object containing information about the key press event
-     */
     @Override
     public void keyPressed(KeyEvent e) {
         int code = e.getKeyCode();
@@ -108,15 +101,6 @@ public class KeyHandler implements KeyListener {
 
     }
 
-    /**
-     * Handles the option state event.
-     * <p>
-     * This method is called when an option state event occurs. It updates the
-     * game state, handles enter key press, and navigates through options using
-     * up, down, left, and right keys.
-     *
-     * @param code the KeyEvent object containing information about the key that was pressed
-     */
     public void optionState(int code) {
 
         if (code == KeyEvent.VK_ESCAPE) {
@@ -185,14 +169,6 @@ public class KeyHandler implements KeyListener {
 //        }
     }
 
-    /**
-     * Handles the key release event.
-     * <p>
-     * This method is called when a key is released. It updates the state of the
-     * corresponding direction variables (up, down, left, right) to false.
-     *
-     * @param e the KeyEvent object containing information about the key that was released
-     */
     @Override
     public void keyReleased(KeyEvent e) {
         int code = e.getKeyCode();

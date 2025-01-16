@@ -19,7 +19,6 @@ public class EventHandler {
         int row = 0;
 
         while (col < gp.maxWorldCol && row < gp.maxWorldRow) {
-
             eventRect[col][row] = new EventRect();
             eventRect[col][row].x = 23;
             eventRect[col][row].y = 23;
@@ -33,9 +32,7 @@ public class EventHandler {
                 col = 0;
                 row++;
             }
-
         }
-
     }
 
     public void checkEvent() {
@@ -59,7 +56,6 @@ public class EventHandler {
     }
 
     public boolean hit(int col, int row, String reqDirection) {
-
         boolean hit = false;
 
         gp.saki.solidArea.x = gp.saki.worldX + gp.saki.solidArea.x;
@@ -82,7 +78,6 @@ public class EventHandler {
         eventRect[col][row].y = eventRect[col][row].eventRectDefaultY;
 
         return hit;
-
     }
 
     public void damagePit(int col, int row, int gameState) {
@@ -91,13 +86,10 @@ public class EventHandler {
     }
 
     public void healingPool(int col, int row, int gameState) {
-
         if (gp.key.enter == true) {
             gp.gameState = gameState;
             gp.ui.currentDialog = "I love you!!!";
             gp.saki.life = gp.saki.maxLife;
         }
-
     }
-
 }

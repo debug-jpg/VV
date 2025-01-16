@@ -17,7 +17,6 @@ public class Sound {
     float volume;
 
     public Sound() {
-
         soundURL[0] = getClass().getResource("/sound/bgm1.wav");
         soundURL[1] = getClass().getResource("/sound/bgm2.wav");
         soundURL[2] = getClass().getResource("/sound/bonus_hint.wav");
@@ -28,24 +27,19 @@ public class Sound {
         soundURL[16] = getClass().getResource("/sound/literary_nonsense.wav");
         soundURL[17] = getClass().getResource("/sound/gunjo_sanka.wav");
         soundURL[18] = getClass().getResource("/sound/cup_noodle.wav");
-
     }
 
     public void setFile(int i) {
-
         try {
-
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(soundURL[i]);
             clip = AudioSystem.getClip();
             clip.open(audioInputStream);
             control = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
             checkVolume();
-
         }
         catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
     public void play() {
@@ -61,7 +55,6 @@ public class Sound {
     }
 
     public void checkVolume() {
-
         switch (volumeScale) {
             case 0:
                 volume = -80f;
@@ -82,9 +75,7 @@ public class Sound {
                 volume = 6f;
                 break;
         }
-
         control.setValue(volume);
-
     }
 }
 

@@ -30,11 +30,9 @@ public class Saki extends Entity {
 
         setDefaultValues();
         getSakiImage();
-
     }
 
     public void setDefaultValues() {
-
         worldX = gp.tileSize * 16;
         worldY = gp.tileSize * 35;
         speed = 4;
@@ -43,11 +41,9 @@ public class Saki extends Entity {
         // PLAYER STATUS
         maxLife = 6;
         life = maxLife;
-
     }
 
     public void getSakiImage() {
-
         up1 = setup("/player/saki_up1");
         up2 = setup("/player/saki_up2");
         down1 = setup("/player/saki_down1");
@@ -58,7 +54,6 @@ public class Saki extends Entity {
         right2 = setup("/player/saki_idle_right");
         left2 = setup("/player/saki_idle_left");
         idleUp = setup("/player/saki_idle_up");
-
     }
 
     public void pickUpObject(int i) {
@@ -102,7 +97,6 @@ public class Saki extends Entity {
     }
 
     public void interactNPC(int i) {
-
         if (i != 999) {
 
             if (gp.key.enter) {
@@ -113,7 +107,6 @@ public class Saki extends Entity {
     }
 
     public void update() {
-
         if (key.up || key.down || key.left || key.right) {
             if (key.up) {
                 direction = "up";
@@ -124,7 +117,6 @@ public class Saki extends Entity {
             } else if (key.right) {
                 direction = "right";
             }
-
 
             //COLLISION
             collisionOn = false;
@@ -142,7 +134,6 @@ public class Saki extends Entity {
             gp.handler.checkEvent();
 
             gp.key.enter = false;
-
 
             //NULL
             if (!collisionOn) {
@@ -183,7 +174,6 @@ public class Saki extends Entity {
     }
 
     public void draw(Graphics2D g2) {
-
         BufferedImage image = null;
 
         switch (direction) {
@@ -220,11 +210,8 @@ public class Saki extends Entity {
                 }
                 break;
         }
-
         g2.drawImage(image, screenX, screenY, null);
-
     }
-
 }
 
 
