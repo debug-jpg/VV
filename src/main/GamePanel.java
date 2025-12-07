@@ -3,7 +3,7 @@ package main;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
-import java.util.Collections;
+//import java.util.Collections;
 import java.util.Comparator;
 import javax.swing.*;
 
@@ -83,15 +83,15 @@ public class GamePanel extends JPanel implements Runnable {
         tempScreen = new BufferedImage(screenWidth, screenHeight, BufferedImage.TYPE_INT_ARGB_PRE);
         g2 = (Graphics2D) tempScreen.getGraphics();
 
-        setFullScreen();
+//        setFullScreen();
     }
 
-    public void setFullScreen() {
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        fullScreenWidth = (int) screenSize.getWidth();
-        fullScreenHeight = (int) screenSize.getHeight();
-        Main.frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-    }
+//    public void setFullScreen() {
+//        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+//        fullScreenWidth = (int) screenSize.getWidth();
+//        fullScreenHeight = (int) screenSize.getHeight();
+//        Main.frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+//    }
 
     public void startGameThread() {
         gameThread = new Thread(this);

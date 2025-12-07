@@ -11,7 +11,7 @@ public class Main {
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setResizable(false);
         frame.setTitle("Visual Venture");
-        frame.setUndecorated(true);
+//        frame.setUndecorated(true);
 
         GamePanel gamePanel = new GamePanel();
         frame.add(gamePanel);
