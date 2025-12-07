@@ -24,14 +24,9 @@ public class GamePanel extends JPanel implements Runnable {
     public final int screenWidth = tileSize * maxScreenCol; // 960px
     public final int screenHeight = tileSize * maxScreenRow; // 576px
 
-    public int ScreenWidth = screenWidth;
-    public int ScreenHeight = screenHeight;
-
     // ----------WORLD----------//
     public final int maxWorldCol = 50;
     public final int maxWorldRow = 50;
-    public final int worldWidth = tileSize * maxWorldCol;
-    public final int worldHeight = tileSize * maxWorldRow;
 
     // ----------FULL SCREEN----------//
     public int fullScreenWidth = screenWidth;
@@ -82,16 +77,7 @@ public class GamePanel extends JPanel implements Runnable {
 
         tempScreen = new BufferedImage(screenWidth, screenHeight, BufferedImage.TYPE_INT_ARGB_PRE);
         g2 = (Graphics2D) tempScreen.getGraphics();
-
-//        setFullScreen();
     }
-
-//    public void setFullScreen() {
-//        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-//        fullScreenWidth = (int) screenSize.getWidth();
-//        fullScreenHeight = (int) screenSize.getHeight();
-//        Main.frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-//    }
 
     public void startGameThread() {
         gameThread = new Thread(this);

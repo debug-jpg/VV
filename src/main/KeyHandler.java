@@ -55,6 +55,12 @@ public class KeyHandler implements KeyListener {
                         }
                     }
                 }
+                if (code == KeyEvent.VK_BACK_QUOTE) {
+                    gp.ui.debugCode = 1;
+                }
+                if (code == KeyEvent.VK_BACK_SLASH) {
+                    gp.ui.debugCode = 0;
+                }
             } else if (gp.ui.titleScreenState == 1) {
                 if (code == KeyEvent.VK_ESCAPE) {
                     gp.ui.titleScreenState = 0;

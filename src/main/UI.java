@@ -23,6 +23,7 @@ public class UI {
     public boolean messageOn = false;
     public String message = "";
     int messageCounter = 0;
+    int debugCode = 0;
     public boolean gameFinished = false;
     public String currentDialog = "";
     public int commandNum = 0;
@@ -106,13 +107,15 @@ public class UI {
 
         g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_LCD_HRGB);
 
-        Mixer.Info[] mixerInfo = AudioSystem.getMixerInfo();
-        String soundStatus = mixerInfo.length == 0 ? "No sound card detected." : "Sound card detected.";
-        Color soundColor = mixerInfo.length == 0 ? Color.red : Color.green;
+        if (debugCode == 1) {
+            Mixer.Info[] mixerInfo = AudioSystem.getMixerInfo();
+            String soundStatus = mixerInfo.length == 0 ? "No sound card detected." : "Sound card detected.";
+            Color soundColor = mixerInfo.length == 0 ? Color.red : Color.green;
 
-        g2.setFont(arial.deriveFont(Font.BOLD, 20));
-        g2.setColor(soundColor);
-        g2.drawString(soundStatus, gp.tileSize, gp.tileSize * 12);
+            g2.setFont(arial.deriveFont(Font.BOLD, 20));
+            g2.setColor(soundColor);
+            g2.drawString(soundStatus, gp.tileSize, gp.tileSize * 12);
+        }
 
         String title = "VISUAL VENTURE";
         int x = getXforCenteredText(title);
